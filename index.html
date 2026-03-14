@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pratomagno Apartment — Tuscany · Casentino · Eco Stay</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --forest: #1B4332;
+  --mid:    #2D6A4F;
+  --sage:   #52B788;
+  --pale:   #D8F3DC;
+  --cream:  #FAFAF7;
+  --paper:  #FFFFFF;
+  --ink:    #1C1C1A;
+  --muted:  #5F5E5A;
+  --border: #E0DDD4;
+  --gold:   #B8860B;
+  --warm:   #F5F0E8;
+  --radius: 12px;
+  --radius-sm: 6px;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  overflow-x: hidden;
+}
+
+/* ── LANG VISIBILITY ── */
+body.lang-en .it { display: none !important; }
+body.lang-it .en { display: none !important; }
+
+/* ── NAV ── */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: .85rem 2rem;
+  transition: background .3s, box-shadow .3s;
+}
+.nav.scrolled {
+  background: rgba(27,67,50,.97);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 20px rgba(0,0,0,.25);
+}
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #fff;
+  letter-spacing: .02em;
+  text-decoration: none;
+}
+.nav-logo em { font-style: italic; color: var(--pale); }
+.nav-right { display: flex; align-items: center; gap: 1rem; }
+.lang-toggle {
+  display: flex; gap: 4px;
+  background: rgba(255,255,255,.1);
+  border-radius: 20px;
+  padding: 3px;
+}
+.lang-toggle button {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px; font-weight: 500;
+  padding: 4px 12px;
+  border-radius: 18px;
+  border: none;
+  background: transparent;
+  color: rgba(255,255,255,.65);
+  cursor: pointer;
+  transition: all .15s;
+  letter-spacing: .04em;
+}
+.lang-toggle button.active { background: #fff; color: var(--forest); }
+.nav-cta {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px; font-weight: 500;
+  padding: 8px 18px;
+  border-radius: var(--radius-sm);
+  background: rgba(255,255,255,.15);
+  border: 1px solid rgba(255,255,255,.25);
+  color: #fff;
+  text-decoration: none;
+  transition: background .15s;
+  letter-spacing: .04em;
+}
+.nav-cta:hover { background: rgba(255,255,255,.25); }
+
+/* ── HERO ── */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  background: var(--forest);
+  display: flex; align-items: center; justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+/* Animated texture overlay */
+.hero-texture {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 120% 80% at 20% 60%, rgba(82,183,136,.18) 0%, transparent 60%),
+    radial-gradient(ellipse 80% 100% at 80% 30%, rgba(27,67,50,.6) 0%, transparent 70%),
+    repeating-linear-gradient(45deg, transparent, transparent 50px, rgba(255,255,255,.012) 50px, rgba(255,255,255,.012) 100px);
+}
+/* Floating orbs */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: .25;
+  animation: drift 12s ease-in-out infinite alternate;
+}
+.orb-1 { width: 500px; height: 500px; background: var(--sage); top: -100px; left: -150px; animation-delay: 0s; }
+.orb-2 { width: 350px; height: 350px; background: var(--mid); bottom: -80px; right: -100px; animation-delay: -4s; }
+.orb-3 { width: 250px; height: 250px; background: #95D5B2; top: 30%; right: 15%; animation-delay: -8s; }
+@keyframes drift {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(30px, -20px) scale(1.08); }
+}
+
+/* Thin horizontal rule lines */
+.hero-lines {
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+    0deg, transparent, transparent 60px,
+    rgba(255,255,255,.03) 60px, rgba(255,255,255,.03) 61px
+  );
+}
+
+.hero-content {
+  position: relative; z-index: 2;
+  padding: 0 1.5rem;
+  max-width: 780px;
+}
+.hero-eyebrow {
+  font-size: 11px; font-weight: 500;
+  letter-spacing: .22em; text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 1.25rem;
+  opacity: 0; transform: translateY(16px);
+  animation: fadeUp .8s .2s forwards;
+}
+.hero-h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3rem, 9vw, 6.5rem);
+  font-weight: 300;
+  color: #fff;
+  line-height: 1.02;
+  letter-spacing: -.01em;
+  margin-bottom: 1.25rem;
+  opacity: 0; transform: translateY(20px);
+  animation: fadeUp .9s .4s forwards;
+}
+.hero-h1 em { font-style: italic; color: var(--pale); font-weight: 300; }
+.hero-h1 .line2 { display: block; }
+.hero-sub {
+  font-size: clamp(14px, 2vw, 17px);
+  color: rgba(255,255,255,.65);
+  max-width: 520px;
+  margin: 0 auto 2.25rem;
+  line-height: 1.7;
+  opacity: 0; transform: translateY(16px);
+  animation: fadeUp .9s .6s forwards;
+}
+.hero-ctas {
+  display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+  opacity: 0; transform: translateY(14px);
+  animation: fadeUp .9s .8s forwards;
+}
+.btn-hero-primary {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px; font-weight: 500;
+  padding: 14px 28px;
+  background: var(--sage);
+  color: var(--forest);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: opacity .15s, transform .1s;
+  letter-spacing: .04em;
+}
+.btn-hero-primary:hover { opacity: .88; transform: translateY(-1px); }
+.btn-hero-outline {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px; font-weight: 500;
+  padding: 14px 28px;
+  background: transparent;
+  color: #fff;
+  border: 1.5px solid rgba(255,255,255,.4);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: border-color .15s, background .15s, transform .1s;
+  letter-spacing: .04em;
+}
+.btn-hero-outline:hover { border-color: #fff; background: rgba(255,255,255,.08); transform: translateY(-1px); }
+
+/* Scroll hint */
+.scroll-hint {
+  position: absolute; bottom: 2rem; left: 50%;
+  transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  font-size: 10px; letter-spacing: .15em; text-transform: uppercase;
+  color: rgba(255,255,255,.4);
+  opacity: 0; animation: fadeIn 1s 1.4s forwards;
+}
+.scroll-line {
+  width: 1px; height: 40px;
+  background: linear-gradient(to bottom, rgba(255,255,255,.4), transparent);
+  animation: scrollPulse 2s 1.5s ease-in-out infinite;
+}
+@keyframes scrollPulse {
+  0%, 100% { transform: scaleY(1); opacity: .5; }
+  50% { transform: scaleY(.6); opacity: 1; }
+}
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+/* ── BADGES strip ── */
+.badges-strip {
+  background: var(--mid);
+  padding: .9rem 2rem;
+  display: flex; justify-content: center;
+  gap: 1rem; flex-wrap: wrap;
+}
+.strip-badge {
+  font-size: 11px; font-weight: 500;
+  padding: 5px 14px;
+  border-radius: 20px;
+  background: rgba(255,255,255,.12);
+  color: var(--pale);
+  border: 1px solid rgba(255,255,255,.18);
+  letter-spacing: .05em;
+}
+
+/* ── SECTIONS shared ── */
+.container { max-width: 960px; margin: 0 auto; padding: 0 1.25rem; }
+section { padding: 5rem 0; }
+.section-eyebrow {
+  font-size: 11px; font-weight: 500;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: .75rem;
+}
+.section-h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.9rem, 4vw, 2.8rem);
+  font-weight: 400;
+  color: var(--forest);
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+.section-h2 em { font-style: italic; color: var(--mid); }
+.section-lead {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.75;
+  max-width: 580px;
+  margin-bottom: 2.5rem;
+}
+
+/* Fade-in on scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.reveal.visible { opacity: 1; transform: none; }
+
+/* ── ECO PILLARS ── */
+.eco-section { background: var(--paper); }
+.eco-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+.eco-pillar {
+  text-align: center;
+  padding: 2rem 1.25rem;
+  background: var(--cream);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  transition: transform .2s, box-shadow .2s;
+}
+.eco-pillar:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(27,67,50,.1); }
+.eco-pillar-icon {
+  font-size: 2.2rem;
+  display: block;
+  margin-bottom: .9rem;
+}
+.eco-pillar-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--forest);
+  margin-bottom: .5rem;
+}
+.eco-pillar-text { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+/* ── ROOMS SPLIT ── */
+.rooms-section { background: var(--cream); }
+.rooms-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+.rooms-visual {
+  background: var(--forest);
+  border-radius: var(--radius);
+  padding: 2.5rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+.rooms-visual::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(45deg, transparent, transparent 30px, rgba(255,255,255,.018) 30px, rgba(255,255,255,.018) 60px);
+}
+.rooms-visual-inner { position: relative; z-index: 1; }
+.rooms-visual h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--sage);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+.stat-list { list-style: none; }
+.stat-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: .7rem 0;
+  border-bottom: 1px solid rgba(255,255,255,.1);
+}
+.stat-item:last-child { border-bottom: none; }
+.stat-label { font-size: 13px; color: rgba(255,255,255,.6); }
+.stat-val {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #fff;
+}
+.rooms-features { list-style: none; }
+.rooms-feat-item {
+  display: flex; gap: 12px; align-items: flex-start;
+  padding: .85rem 0;
+  border-bottom: .5px solid var(--border);
+}
+.rooms-feat-item:last-child { border-bottom: none; }
+.rooms-feat-icon {
+  width: 34px; height: 34px;
+  background: var(--pale);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; flex-shrink: 0;
+}
+.rooms-feat-title { font-size: 14px; font-weight: 500; color: var(--forest); margin-bottom: 2px; }
+.rooms-feat-desc  { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+/* ── TERRITORY MOSAIC ── */
+.territory-section { background: var(--forest); }
+.territory-section .section-eyebrow { color: var(--sage); }
+.territory-section .section-h2 { color: #fff; }
+.territory-section .section-h2 em { color: var(--pale); }
+.territory-section .section-lead { color: rgba(255,255,255,.6); }
+.mosaic {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto auto;
+  gap: 1rem;
+}
+.mosaic-card {
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: var(--radius);
+  padding: 1.5rem 1.25rem;
+  transition: background .2s, transform .2s;
+}
+.mosaic-card:hover { background: rgba(255,255,255,.12); transform: translateY(-3px); }
+.mosaic-card.wide { grid-column: span 2; }
+.mosaic-icon { font-size: 1.8rem; margin-bottom: .75rem; display: block; }
+.mosaic-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: .4rem;
+}
+.mosaic-text { font-size: 13px; color: rgba(255,255,255,.6); line-height: 1.6; }
+.mosaic-dist { font-size: 11px; color: var(--sage); font-weight: 500; margin-top: .5rem; letter-spacing: .05em; }
+
+/* ── PRICING TEASER ── */
+.pricing-section { background: var(--cream); }
+.pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1px; background: var(--border); border-radius: var(--radius); overflow: hidden; }
+.price-col { background: var(--paper); padding: 1.5rem 1.25rem; text-align: center; transition: background .15s; }
+.price-col:hover { background: var(--cream); }
+.price-season { font-size: 11px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: .5rem; }
+.price-period { font-size: 12px; color: var(--muted); font-style: italic; margin-bottom: .75rem; }
+.price-from { font-size: 11px; color: var(--muted); margin-bottom: 2px; }
+.price-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: var(--forest);
+  line-height: 1;
+}
+.price-unit { font-size: 12px; color: var(--muted); margin-top: 3px; }
+.price-badge { display: inline-block; font-size: 10px; font-weight: 500; padding: 2px 8px; border-radius: 10px; background: var(--pale); color: var(--mid); border: 1px solid #95D5B2; margin-top: .5rem; }
+
+.pricing-note {
+  text-align: center;
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 1.5rem;
+  line-height: 1.6;
+}
+.pricing-note strong { color: var(--forest); }
+
+/* ── PAGES NAV ── */
+.pages-section { background: var(--paper); }
+.pages-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1rem; }
+.page-card {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.4rem 1.25rem 1.25rem;
+  text-decoration: none;
+  display: block;
+  transition: transform .18s, box-shadow .18s, border-color .15s;
+}
+.page-card:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(27,67,50,.12); border-color: var(--sage); }
+.page-card-icon { font-size: 1.8rem; margin-bottom: .7rem; display: block; }
+.page-card-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--forest);
+  margin-bottom: .35rem;
+}
+.page-card-desc { font-size: 12px; color: var(--muted); line-height: 1.55; }
+.page-card-arrow { font-size: 14px; color: var(--sage); margin-top: .6rem; display: block; }
+
+/* ── FINAL CTA ── */
+.cta-section { background: var(--forest); text-align: center; padding: 5rem 2rem; }
+.cta-section .section-eyebrow { color: var(--sage); }
+.cta-h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 300;
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+.cta-h2 em { font-style: italic; color: var(--pale); }
+.cta-lead { font-size: 15px; color: rgba(255,255,255,.65); max-width: 460px; margin: 0 auto 2.5rem; line-height: 1.7; }
+.cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.btn-cta-primary { font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; padding: 14px 30px; background: var(--sage); color: var(--forest); border-radius: var(--radius-sm); text-decoration: none; transition: opacity .15s; letter-spacing: .04em; }
+.btn-cta-primary:hover { opacity: .88; }
+.btn-cta-outline { font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; padding: 14px 30px; background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,.4); border-radius: var(--radius-sm); text-decoration: none; transition: border-color .15s, background .15s; letter-spacing: .04em; }
+.btn-cta-outline:hover { border-color: #fff; background: rgba(255,255,255,.08); }
+
+/* ── FOOTER ── */
+footer {
+  background: #0F2B1E;
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: rgba(255,255,255,.7);
+  margin-bottom: .75rem;
+}
+.footer-logo em { font-style: italic; color: var(--pale); }
+.footer-info { font-size: 12px; color: rgba(255,255,255,.4); line-height: 1.7; }
+.footer-info a { color: var(--sage); text-decoration: none; }
+
+/* ── DIVIDER ── */
+.divider { height: 1px; background: var(--border); }
+
+@media (max-width: 720px) {
+  .rooms-layout { grid-template-columns: 1fr; gap: 2rem; }
+  .mosaic { grid-template-columns: 1fr; }
+  .mosaic-card.wide { grid-column: span 1; }
+  .nav { padding: .7rem 1rem; }
+  .hero-h1 { font-size: 2.8rem; }
+}
+</style>
+</head>
+<body class="lang-it">
+
+<!-- ── NAV ── -->
+<nav class="nav" id="mainNav">
+  <a class="nav-logo" href="#">Pratomagno <em>Apartment</em></a>
+  <div class="nav-right">
+    <div class="lang-toggle">
+      <button class="active" onclick="setLang('it')">IT</button>
+      <button onclick="setLang('en')">EN</button>
+    </div>
+    <a href="mailto:pratomagnoapartment@gmail.com" class="nav-cta it">Prenota ora</a>
+    <a href="mailto:pratomagnoapartment@gmail.com" class="nav-cta en">Book now</a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <div class="hero-texture"></div>
+  <div class="hero-lines"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow it">Casentino · Toscana · 700 m s.l.m.</p>
+    <p class="hero-eyebrow en">Casentino · Tuscany · 700 m altitude</p>
+    <h1 class="hero-h1">
+      <span class="it">Dove la Toscana<span class="line2">è ancora <em>selvaggia</em></span></span>
+      <span class="en">Where Tuscany<span class="line2">is still <em>wild</em></span></span>
+    </h1>
+    <p class="hero-sub it">Un appartamento eco-sostenibile nel cuore del Pratomagno, immerso nei boschi del Casentino. Energia solare, Starlink Wi-Fi, silenzio totale — a 1 ora da Firenze.</p>
+    <p class="hero-sub en">An eco-sustainable apartment in the heart of Pratomagno, surrounded by Casentino woodland. Solar energy, Starlink Wi-Fi, total silence — 1 hour from Florence.</p>
+    <div class="hero-ctas">
+      <a href="#prezzi" class="btn-hero-primary it">Scopri le tariffe</a>
+      <a href="#prezzi" class="btn-hero-primary en">See rates</a>
+      <a href="mailto:pratomagnoapartment@gmail.com" class="btn-hero-outline it">Contattaci</a>
+      <a href="mailto:pratomagnoapartment@gmail.com" class="btn-hero-outline en">Contact us</a>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    <span class="it">scorri</span>
+    <span class="en">scroll</span>
+  </div>
+</div>
+
+<!-- ── BADGES ── -->
+<div class="badges-strip">
+  <span class="strip-badge">⚡ Elettricità fotovoltaica</span>
+  <span class="strip-badge">☀ Acqua calda solare</span>
+  <span class="strip-badge">🛰 Starlink Wi-Fi</span>
+  <span class="strip-badge">♻ Zero waste</span>
+  <span class="strip-badge it">👨‍👩‍👧‍👦 Max 4 ospiti</span>
+  <span class="strip-badge en">👨‍👩‍👧‍👦 Max 4 guests</span>
+  <span class="strip-badge">CIN IT051010C2QLKDO7XC</span>
+</div>
+
+<!-- ── ECO PILLARS ── -->
+<section class="eco-section">
+  <div class="container">
+    <p class="section-eyebrow reveal it">Eco-sostenibilità</p>
+    <p class="section-eyebrow reveal en">Eco-sustainability</p>
+    <h2 class="section-h2 reveal it">Un soggiorno <em>a impatto zero</em></h2>
+    <h2 class="section-h2 reveal en">A <em>zero-impact</em> stay</h2>
+    <p class="section-lead reveal it">Ogni prenotazione include energia 100% rinnovabile, acqua calda solare e una filosofia zero rifiuti. Soggiornare qui è una scelta consapevole per l'ambiente e per te.</p>
+    <p class="section-lead reveal en">Every booking includes 100% renewable energy, solar hot water and a zero-waste philosophy. Staying here is a conscious choice for the environment and for yourself.</p>
+    <div class="eco-grid">
+      <div class="eco-pillar reveal">
+        <span class="eco-pillar-icon">☀</span>
+        <div class="eco-pillar-title it">Solare Termico</div>
+        <div class="eco-pillar-title en">Solar Thermal</div>
+        <div class="eco-pillar-text it">Pannelli solari termici sul tetto per il 100% dell'acqua calda domestica. Niente gas, zero emissioni, tutto l'anno.</div>
+        <div class="eco-pillar-text en">Rooftop solar thermal panels supply 100% of domestic hot water. No gas, zero emissions, year-round.</div>
+      </div>
+      <div class="eco-pillar reveal">
+        <span class="eco-pillar-icon">⚡</span>
+        <div class="eco-pillar-title it">Fotovoltaico</div>
+        <div class="eco-pillar-title en">Photovoltaic</div>
+        <div class="eco-pillar-text it">Pannelli FV generano tutta l'energia elettrica in loco. Il vostro soggiorno produce quasi zero CO₂.</div>
+        <div class="eco-pillar-text en">On-site PV panels generate all electricity. Your stay produces near-zero CO₂.</div>
+      </div>
+      <div class="eco-pillar reveal">
+        <span class="eco-pillar-icon">🛰</span>
+        <div class="eco-pillar-title it">Starlink Wi-Fi</div>
+        <div class="eco-pillar-title en">Starlink Wi-Fi</div>
+        <div class="eco-pillar-text it">Internet satellitare 45–130 Mbps, bassa latenza, copertura totale. Perfetto per smart working e nomadi digitali.</div>
+        <div class="eco-pillar-text en">45–130 Mbps satellite internet, low latency, full coverage. Perfect for remote work and digital nomads.</div>
+      </div>
+      <div class="eco-pillar reveal">
+        <span class="eco-pillar-icon">♻</span>
+        <div class="eco-pillar-title it">Zero Rifiuti</div>
+        <div class="eco-pillar-title en">Zero Waste</div>
+        <div class="eco-pillar-text it">Stoviglie riutilizzabili, dispenser organici ricaricabili, raccolta differenziata. Acqua di sorgente — niente plastica.</div>
+        <div class="eco-pillar-text en">Reusable crockery, refillable organic dispensers, recycling. Spring tap water — no plastic bottles.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── ROOMS ── -->
+<section class="rooms-section">
+  <div class="container">
+    <div class="rooms-layout">
+      <div>
+        <p class="section-eyebrow reveal it">L'appartamento</p>
+        <p class="section-eyebrow reveal en">The apartment</p>
+        <h2 class="section-h2 reveal it">Spazi pensati per il <em>benessere</em></h2>
+        <h2 class="section-h2 reveal en">Spaces designed for <em>wellbeing</em></h2>
+        <p class="section-lead reveal it">Un appartamento indipendente per un massimo di 4 ospiti, con vista sul borgo medievale di Castagneto-Cetica e sui boschi del Pratomagno.</p>
+        <p class="section-lead reveal en">An independent apartment for up to 4 guests, with views over the medieval hamlet of Castagneto-Cetica and the Pratomagno woodland.</p>
+        <ul class="rooms-features reveal">
+          <li class="rooms-feat-item">
+            <div class="rooms-feat-icon">🛏</div>
+            <div>
+              <div class="rooms-feat-title it">2 camere da letto</div>
+              <div class="rooms-feat-title en">2 bedrooms</div>
+              <div class="rooms-feat-desc it">Camera matrimoniale + seconda camera singola/doppia</div>
+              <div class="rooms-feat-desc en">Double room + second twin/single room</div>
+            </div>
+          </li>
+          <li class="rooms-feat-item">
+            <div class="rooms-feat-icon">🍳</div>
+            <div>
+              <div class="rooms-feat-title it">Cucina completamente attrezzata</div>
+              <div class="rooms-feat-title en">Fully equipped kitchen</div>
+              <div class="rooms-feat-desc it">Piano a induzione, forno, frigorifero, stoviglie riutilizzabili</div>
+              <div class="rooms-feat-desc en">Induction hob, oven, fridge, reusable crockery</div>
+            </div>
+          </li>
+          <li class="rooms-feat-item">
+            <div class="rooms-feat-icon">🌿</div>
+            <div>
+              <div class="rooms-feat-title it">Spazio esterno privato</div>
+              <div class="rooms-feat-title en">Private outdoor space</div>
+              <div class="rooms-feat-desc it">Terrazzo con vista panoramica sulle colline del Casentino</div>
+              <div class="rooms-feat-desc en">Terrace with panoramic views over the Casentino hills</div>
+            </div>
+          </li>
+          <li class="rooms-feat-item">
+            <div class="rooms-feat-icon">🔥</div>
+            <div>
+              <div class="rooms-feat-title it">Riscaldamento a pellet (inverno)</div>
+              <div class="rooms-feat-title en">Pellet heating (winter)</div>
+              <div class="rooms-feat-desc it">Stufa a pellet per soggiorni da novembre a marzo</div>
+              <div class="rooms-feat-desc en">Pellet stove for stays from November to March</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="rooms-visual reveal">
+        <div class="rooms-visual-inner">
+          <h3 class="it">In sintesi</h3>
+          <h3 class="en">At a glance</h3>
+          <ul class="stat-list">
+            <li class="stat-item">
+              <span class="stat-label it">Ospiti max</span>
+              <span class="stat-label en">Max guests</span>
+              <span class="stat-val">4</span>
+            </li>
+            <li class="stat-item">
+              <span class="stat-label it">Camere da letto</span>
+              <span class="stat-label en">Bedrooms</span>
+              <span class="stat-val">2</span>
+            </li>
+            <li class="stat-item">
+              <span class="stat-label it">Bagni</span>
+              <span class="stat-label en">Bathrooms</span>
+              <span class="stat-val">1</span>
+            </li>
+            <li class="stat-item">
+              <span class="stat-label it">Altitudine</span>
+              <span class="stat-label en">Altitude</span>
+              <span class="stat-val">700 m</span>
+            </li>
+            <li class="stat-item">
+              <span class="stat-label it">Wi-Fi</span>
+              <span class="stat-label en">Wi-Fi</span>
+              <span class="stat-val" style="font-size:1rem;padding-top:4px">Starlink</span>
+            </li>
+            <li class="stat-item">
+              <span class="stat-label it">Energia</span>
+              <span class="stat-label en">Energy</span>
+              <span class="stat-val" style="font-size:1rem;padding-top:4px">100% ☀</span>
+            </li>
+            <li class="stat-item">
+              <span class="stat-label it">Parcheggio</span>
+              <span class="stat-label en">Parking</span>
+              <span class="stat-val" style="font-size:1rem;padding-top:4px;color:var(--pale)" class="it">Gratuito</span>
+              <span class="stat-val" style="font-size:1rem;padding-top:4px;color:var(--pale)" class="en">Free</span>
+            </li>
+            <li class="stat-item">
+              <span class="stat-label it">Da Firenze</span>
+              <span class="stat-label en">From Florence</span>
+              <span class="stat-val">~1h 20′</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── TERRITORY ── -->
+<section class="territory-section">
+  <div class="container">
+    <p class="section-eyebrow reveal it">Il territorio</p>
+    <p class="section-eyebrow reveal en">The territory</p>
+    <h2 class="section-h2 reveal it">Il Casentino <em>ai vostri piedi</em></h2>
+    <h2 class="section-h2 reveal en">The Casentino <em>on your doorstep</em></h2>
+    <p class="section-lead reveal it">Boschi millenari, castelli medievali, abbazie romaniche, cime appenniniche e una vallata che sembra ferma nel tempo. Tutto raggiungibile in pochi minuti dall'appartamento.</p>
+    <p class="section-lead reveal en">Ancient forests, medieval castles, Romanesque abbeys, Apennine peaks and a valley that seems frozen in time. All reachable within minutes from the apartment.</p>
+    <div class="mosaic reveal">
+      <div class="mosaic-card wide">
+        <span class="mosaic-icon">🌲</span>
+        <div class="mosaic-title it">Parco Nazionale Foreste Casentinesi</div>
+        <div class="mosaic-title en">Casentino National Forest Park</div>
+        <div class="mosaic-text it">36.000 ettari di boschi tra i più intatti d'Europa. Lupi, cervi, aquile reali. Rete CAI di sentieri direttamente dall'appartamento. Patrimonio UNESCO.</div>
+        <div class="mosaic-text en">36,000 hectares of among Europe's most intact forests. Wolves, deer, golden eagles. CAI trail network starting from the apartment. UNESCO World Heritage.</div>
+        <div class="mosaic-dist it">📍 Da 5 km</div>
+        <div class="mosaic-dist en">📍 From 5 km</div>
+      </div>
+      <div class="mosaic-card">
+        <span class="mosaic-icon">🏰</span>
+        <div class="mosaic-title it">Castello di Poppi</div>
+        <div class="mosaic-title en">Poppi Castle</div>
+        <div class="mosaic-text it">Uno dei borghi medievali più belli d'Italia, con castello trecentesco e vista sull'intera vallata.</div>
+        <div class="mosaic-text en">One of Italy's most beautiful medieval villages, with a 14th-century castle and views over the whole valley.</div>
+        <div class="mosaic-dist">📍 ~20 km · 25 min</div>
+      </div>
+      <div class="mosaic-card">
+        <span class="mosaic-icon">⛪</span>
+        <div class="mosaic-title it">Santuario della Verna</div>
+        <div class="mosaic-title en">La Verna Sanctuary</div>
+        <div class="mosaic-text it">Luogo sacro francescano dove San Francesco ricevette le stigmate nel 1224, immerso in una foresta di abeti.</div>
+        <div class="mosaic-text en">Franciscan sacred site where St Francis received the stigmata in 1224, surrounded by a fir forest.</div>
+        <div class="mosaic-dist">📍 ~30 km · 35 min</div>
+      </div>
+      <div class="mosaic-card">
+        <span class="mosaic-icon">⛩</span>
+        <div class="mosaic-title it">Camaldoli</div>
+        <div class="mosaic-title en">Camaldoli</div>
+        <div class="mosaic-text it">Monastero fondato nel 1012 e eremo a 1111 m, tra le foreste più antiche della Toscana.</div>
+        <div class="mosaic-text en">Monastery founded in 1012 and hermitage at 1,111 m, among the most ancient forests of Tuscany.</div>
+        <div class="mosaic-dist">📍 ~25 km · 30 min</div>
+      </div>
+      <div class="mosaic-card">
+        <span class="mosaic-icon">🥾</span>
+        <div class="mosaic-title it">Cima del Pratomagno</div>
+        <div class="mosaic-title en">Pratomagno Summit</div>
+        <div class="mosaic-text it">1592 m — escursione in giornata dai sentieri CAI vicino all'appartamento. Vista su Valdarno e Casentino.</div>
+        <div class="mosaic-text en">1,592 m — day hike via CAI trails near the apartment. Views over Valdarno and Casentino.</div>
+        <div class="mosaic-dist it">📍 Direttamente dall'appartamento</div>
+        <div class="mosaic-dist en">📍 Directly from the apartment</div>
+      </div>
+      <div class="mosaic-card wide">
+        <span class="mosaic-icon">💻</span>
+        <div class="mosaic-title it">Smart working nella natura</div>
+        <div class="mosaic-title en">Remote working in nature</div>
+        <div class="mosaic-text it">Starlink 45–130 Mbps, silenzio totale, aria pulita di montagna. Tariffe speciali per soggiorni di 7+ notti (-10%). Il ritiro ideale per chi lavora da remoto.</div>
+        <div class="mosaic-text en">Starlink 45–130 Mbps, total silence, clean mountain air. Special rates for 7+ night stays (-10%). The ideal retreat for remote workers.</div>
+        <div class="mosaic-dist it">📍 Direttamente dall'appartamento</div>
+        <div class="mosaic-dist en">📍 Directly from the apartment</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRICING ── -->
+<section class="pricing-section" id="prezzi">
+  <div class="container">
+    <p class="section-eyebrow reveal it">Tariffe 2026</p>
+    <p class="section-eyebrow reveal en">2026 Rates</p>
+    <h2 class="section-h2 reveal it">Prenotazione diretta — <em>tariffa più bassa</em></h2>
+    <h2 class="section-h2 reveal en">Direct booking — <em>lowest rate</em></h2>
+    <p class="section-lead reveal it">Prenotando direttamente eviti le commissioni delle OTA. Prezzi indicati per 2 ospiti — variano per numero di ospiti e stagione.</p>
+    <p class="section-lead reveal en">Book directly and avoid OTA commissions. Prices shown for 2 guests — vary by number of guests and season.</p>
+    <div class="pricing-grid reveal">
+      <div class="price-col">
+        <div class="price-season it">🔵 Bassa stagione</div>
+        <div class="price-season en">🔵 Low season</div>
+        <div class="price-period it">Nov–Mar</div>
+        <div class="price-period en">Nov–Mar</div>
+        <div class="price-from it">da</div>
+        <div class="price-from en">from</div>
+        <div class="price-num">€ 94</div>
+        <div class="price-unit it">notte · 2 ospiti</div>
+        <div class="price-unit en">night · 2 guests</div>
+        <span class="price-badge it">min 2 notti</span>
+        <span class="price-badge en">min 2 nights</span>
+      </div>
+      <div class="price-col">
+        <div class="price-season it">🟡 Mezza stagione</div>
+        <div class="price-season en">🟡 Shoulder</div>
+        <div class="price-period it">Apr–Mag · Ott</div>
+        <div class="price-period en">Apr–May · Oct</div>
+        <div class="price-from it">da</div>
+        <div class="price-from en">from</div>
+        <div class="price-num">€ 110</div>
+        <div class="price-unit it">notte · 2 ospiti</div>
+        <div class="price-unit en">night · 2 guests</div>
+        <span class="price-badge it">min 2 notti</span>
+        <span class="price-badge en">min 2 nights</span>
+      </div>
+      <div class="price-col">
+        <div class="price-season it">🟠 Alta stagione</div>
+        <div class="price-season en">🟠 High season</div>
+        <div class="price-period it">Giu–Set</div>
+        <div class="price-period en">Jun–Sep</div>
+        <div class="price-from it">da</div>
+        <div class="price-from en">from</div>
+        <div class="price-num">€ 132</div>
+        <div class="price-unit it">notte · 2 ospiti</div>
+        <div class="price-unit en">night · 2 guests</div>
+        <span class="price-badge it">min 3 notti</span>
+        <span class="price-badge en">min 3 nights</span>
+      </div>
+      <div class="price-col">
+        <div class="price-season it">🔴 Picco</div>
+        <div class="price-season en">🔴 Peak</div>
+        <div class="price-period it">Natale · Pasqua · Agosto</div>
+        <div class="price-period en">Christmas · Easter · August</div>
+        <div class="price-from it">da</div>
+        <div class="price-from en">from</div>
+        <div class="price-num">€ 149</div>
+        <div class="price-unit it">notte · 2 ospiti</div>
+        <div class="price-unit en">night · 2 guests</div>
+        <span class="price-badge it">min 3 notti</span>
+        <span class="price-badge en">min 3 nights</span>
+      </div>
+      <div class="price-col" style="background:var(--pale)">
+        <div class="price-season it">💻 Smart-work</div>
+        <div class="price-season en">💻 Smart-work</div>
+        <div class="price-period it">≥7 notti</div>
+        <div class="price-period en">≥7 nights</div>
+        <div class="price-from it">da</div>
+        <div class="price-from en">from</div>
+        <div class="price-num" style="color:var(--mid)">€ 99</div>
+        <div class="price-unit it">notte · 2 ospiti</div>
+        <div class="price-unit en">night · 2 guests</div>
+        <span class="price-badge">−10% 🎉</span>
+      </div>
+    </div>
+    <p class="pricing-note reveal">
+      <span class="it">+ Utenze € 5/notte · + Pulizia € 10 (una tantum) · + Tassa soggiorno € 2/persona/notte (max 4gg)<br>
+      <strong>Bambini &lt;4 anni gratuiti</strong> · Sconto 10% su soggiorni ≥7 notti · Prezzi variano per 1–4 ospiti</span>
+      <span class="en">+ Utilities € 5/night · + Cleaning € 10 (one-off) · + Tourist tax € 2/person/night (max 4 nights)<br>
+      <strong>Children under 4 free</strong> · 10% discount for stays of 7+ nights · Prices vary for 1–4 guests</span>
+    </p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── PAGE NAVIGATION ── -->
+<section class="pages-section">
+  <div class="container">
+    <p class="section-eyebrow reveal it">Esplora il sito</p>
+    <p class="section-eyebrow reveal en">Explore the site</p>
+    <h2 class="section-h2 reveal it">Tutto quello che ti serve <em>sapere</em></h2>
+    <h2 class="section-h2 reveal en">Everything you need <em>to know</em></h2>
+    <div class="pages-grid">
+      <a class="page-card reveal" href="#">
+        <span class="page-card-icon">🧮</span>
+        <div class="page-card-title it">Preventivo soggiorno</div>
+        <div class="page-card-title en">Stay quote</div>
+        <div class="page-card-desc it">Calcola il costo del tuo soggiorno in tempo reale — ospiti, notti, stagione.</div>
+        <div class="page-card-desc en">Calculate the cost of your stay in real time — guests, nights, season.</div>
+        <span class="page-card-arrow">→</span>
+      </a>
+      <a class="page-card reveal" href="#">
+        <span class="page-card-icon">🏠</span>
+        <div class="page-card-title it">Caratteristiche</div>
+        <div class="page-card-title en">Apartment features</div>
+        <div class="page-card-desc it">Composizione degli spazi, dotazioni, servizi inclusi e tutto ciò che rende unico l'appartamento.</div>
+        <div class="page-card-desc en">Room layout, amenities, included services and everything that makes the apartment unique.</div>
+        <span class="page-card-arrow">→</span>
+      </a>
+      <a class="page-card reveal" href="#">
+        <span class="page-card-icon">🌲</span>
+        <div class="page-card-title it">La Valle del Casentino</div>
+        <div class="page-card-title en">Casentino Valley</div>
+        <div class="page-card-desc it">Scopri il territorio: luoghi da visitare, attività, storia e consigli pratici per la tua visita.</div>
+        <div class="page-card-desc en">Discover the area: places to visit, activities, history and practical tips for your visit.</div>
+        <span class="page-card-arrow">→</span>
+      </a>
+      <a class="page-card reveal" href="#">
+        <span class="page-card-icon">🗺</span>
+        <div class="page-card-title it">Come arrivare</div>
+        <div class="page-card-title en">How to get here</div>
+        <div class="page-card-desc it">Coordinate GPS, indicazioni stradali da Firenze e Arezzo, parcheggio, trasporti.</div>
+        <div class="page-card-desc en">GPS coordinates, driving directions from Florence and Arezzo, parking, transport.</div>
+        <span class="page-card-arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FINAL CTA ── -->
+<section class="cta-section">
+  <div class="container">
+    <p class="section-eyebrow reveal it">Prenota direttamente</p>
+    <p class="section-eyebrow reveal en">Book direct</p>
+    <h2 class="cta-h2 reveal it">Inizia la tua <em>avventura</em></h2>
+    <h2 class="cta-h2 reveal en">Begin your <em>adventure</em></h2>
+    <p class="cta-lead reveal it">Scrivici o mandaci un messaggio WhatsApp. Risponderemo entro 24 ore con disponibilità e conferma della prenotazione. Nessun intermediario, tariffa più bassa garantita.</p>
+    <p class="cta-lead reveal en">Email us or send a WhatsApp message. We'll reply within 24 hours with availability and booking confirmation. No intermediaries, lowest rate guaranteed.</p>
+    <div class="cta-btns reveal">
+      <a href="mailto:pratomagnoapartment@gmail.com" class="btn-cta-primary it">✉ Invia email</a>
+      <a href="mailto:pratomagnoapartment@gmail.com" class="btn-cta-primary en">✉ Send email</a>
+      <a href="https://wa.me/390575555106" class="btn-cta-outline">💬 WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-logo">Pratomagno <em>Apartment</em></div>
+  <div class="footer-info">
+    Castagneto-Cetica · Castel San Niccolò (AR) 52018 · Tuscany, Italy<br>
+    <a href="mailto:pratomagnoapartment@gmail.com">pratomagnoapartment@gmail.com</a> · Tel. +39 0575 555106<br>
+    CIN: IT051010C2QLKDO7XC · ⚡ 100% energia rinnovabile / renewable energy
+  </div>
+</footer>
+
+<script>
+/* ── Lang toggle ── */
+function setLang(lang) {
+  document.body.className = 'lang-' + lang;
+  document.querySelectorAll('.lang-toggle button').forEach((b, i) => {
+    b.classList.toggle('active', (i === 0 && lang === 'it') || (i === 1 && lang === 'en'));
+  });
+}
+
+/* ── Scroll-reveal ── */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach((el, i) => {
+  el.style.transitionDelay = (i % 4) * 0.08 + 's';
+  observer.observe(el);
+});
+
+/* ── Nav scroll effect ── */
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+</script>
+</body>
+</html>
