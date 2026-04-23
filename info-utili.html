@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Info Utili — Pratomagno Apartment</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,900;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--linen:#fdf9f2;--parchment:#f5eedd;--stone:#e8dcc8;--ink:#2c2416;--ink2:#4a3d2e;--muted:#7a6a52;--moss:#3a6b2a;--fern:#4e8a38;--sage:#78b060;--pale-green:#dff0d4;--sage-tint:#eef6e8;--terracotta:#b8501a;--border:#ddd0b8;--border-light:#eae0cc;--r:10px}
+body{font-family:'Lato',sans-serif;font-weight:300;background:var(--linen);color:var(--ink);line-height:1.65;font-size:16px}
+body.lang-en .it{display:none!important}
+body.lang-it .en{display:none!important}
+/* NAV */
+.topnav{position:sticky;top:0;z-index:100;background:rgba(253,249,242,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border-light);padding:.75rem 2rem;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--ink);text-decoration:none}
+.nav-brand em{font-style:italic;color:var(--moss)}
+.nav-back{font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--fern);text-decoration:none;display:flex;align-items:center;gap:.4rem}
+.nav-back:hover{text-decoration:underline}
+.lang-toggle{display:flex;gap:3px}
+.lang-btn{font-family:'Lato',sans-serif;font-size:.72rem;font-weight:700;padding:.3rem .65rem;border:1px solid var(--border);background:transparent;color:var(--muted);border-radius:4px;cursor:pointer;transition:all .15s}
+.lang-btn.active{background:var(--moss);color:#fff;border-color:var(--moss)}
+/* LAYOUT */
+.container{max-width:800px;margin:0 auto;padding:2.5rem 1.5rem 5rem}
+.page-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3rem);font-weight:900;color:var(--ink);margin-bottom:.5rem;letter-spacing:-.02em}
+.page-title em{font-style:italic;color:var(--moss)}
+.page-subtitle{font-size:.95rem;color:var(--muted);margin-bottom:3rem;line-height:1.6}
+.section-block{margin-bottom:3rem}
+.section-block h2{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:600;color:var(--moss);margin-bottom:1.25rem;padding-bottom:.5rem;border-bottom:2px solid var(--pale-green);display:flex;align-items:center;gap:.5rem}
+.section-block h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--ink);margin:1.5rem 0 .75rem}
+.place-group{margin-bottom:1.5rem}
+.place-distance{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--terracotta);margin-bottom:.5rem}
+.place-list{list-style:none;display:flex;flex-direction:column;gap:.4rem}
+.place-list li{font-size:.88rem;color:var(--ink2);padding:.45rem .75rem;background:#fff;border-radius:6px;border:1px solid var(--border-light);display:flex;align-items:flex-start;gap:.5rem;line-height:1.5}
+.place-list li span.name{font-weight:700}
+.place-list li span.tel{color:var(--muted);font-size:.82rem}
+.place-list li span.note{color:var(--terracotta);font-size:.78rem;font-style:italic}
+/* Rules */
+.rule-list{list-style:none;display:flex;flex-direction:column;gap:.65rem}
+.rule-item{display:flex;gap:.75rem;align-items:flex-start;font-size:.88rem;color:var(--ink2);line-height:1.6}
+.rule-item .ri{font-size:1.1rem;flex-shrink:0;padding-top:.1rem}
+/* What to see */
+.see-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.see-card{background:#fff;border-radius:var(--r);padding:1.1rem;border:1px solid var(--border-light)}
+.see-card h4{font-family:'Playfair Display',serif;font-size:.95rem;font-weight:600;color:var(--moss);margin-bottom:.6rem}
+.see-card ul{list-style:none;font-size:.82rem;color:var(--ink2);line-height:1.7}
+.see-card ul li::before{content:'→ ';color:var(--fern);font-weight:700}
+/* Trail list */
+.trail-list{list-style:none;font-size:.82rem;color:var(--ink2);line-height:1.75}
+.trail-list li{padding:.2rem 0}
+.trail-list li::before{content:'🥾 '}
+/* Links */
+.link-list{list-style:none;font-size:.82rem;line-height:2}
+.link-list a{color:var(--fern);text-decoration:none}
+.link-list a:hover{text-decoration:underline}
+/* Info box */
+.info-box{background:var(--sage-tint);border:1px solid rgba(78,138,56,.2);border-radius:var(--r);padding:1.25rem 1.4rem;font-size:.88rem;line-height:1.7;color:var(--ink2);margin-bottom:1.5rem}
+.info-box strong{color:var(--moss)}
+/* Times */
+.times-card{background:#fff;border-radius:var(--r);border:1px solid var(--border-light);overflow:hidden;margin-bottom:1rem}
+.times-row{display:flex;align-items:center;justify-content:space-between;padding:.85rem 1.2rem;border-bottom:1px solid var(--border-light);font-size:.88rem}
+.times-row:last-child{border-bottom:none}
+.times-row .label{color:var(--muted)}
+.times-row .value{font-weight:700;color:var(--ink)}
+@media(max-width:600px){.see-grid{grid-template-columns:1fr}.topnav{padding:.6rem 1rem}}
+</style>
+</head>
+<body class="lang-it">
+<nav class="topnav">
+  <a href="index.html" class="nav-brand">Pratomagno <em>Apartment</em></a>
+  <a href="index.html" class="nav-back">← <span class="it">Torna al sito</span><span class="en">Back to site</span></a>
+  <div class="lang-toggle">
+    <button class="lang-btn active" onclick="setLang('it')">IT</button>
+    <button class="lang-btn" onclick="setLang('en')">EN</button>
+  </div>
+</nav>
+<div class="container">
+  <h1 class="page-title it">Info <em>Utili</em></h1>
+  <h1 class="page-title en">Useful <em>Info</em></h1>
+  <p class="page-subtitle it">Ristoranti, bar, servizi, regole della casa e cosa vedere nel Casentino</p>
+  <p class="page-subtitle en">Restaurants, bars, services, house rules and what to see in the Casentino</p>
+
+  <!-- CHECK-IN / CHECK-OUT -->
+  <div class="section-block">
+    <h2>🔑 <span class="it">Check-in &amp; Check-out</span><span class="en">Check-in &amp; Check-out</span></h2>
+    <div class="times-card">
+      <div class="times-row"><span class="label">Check-in</span><span class="value it">dalle 15:00 · Self check-in disponibile</span><span class="value en">from 15:00 · Self check-in available</span></div>
+      <div class="times-row"><span class="label">Check-out</span><span class="value it">entro le 10:30 · Chiavi nella cassettina</span><span class="value en">by 10:30 · Leave keys in the key box</span></div>
+      <div class="times-row"><span class="label it">Silenzio notturno</span><span class="label en">Quiet hours</span><span class="value">22:00 – 08:00</span></div>
+    </div>
+    <div class="info-box">
+      <strong class="it">Prima dell'arrivo</strong><strong class="en">Before arrival</strong>
+      <span class="it"> — Le istruzioni dettagliate e il codice della cassettina delle chiavi vi saranno inviati 24 ore prima. I dati di tutti gli ospiti devono essere comunicati entro 24 ore dall'arrivo (obbligo di legge).</span>
+      <span class="en"> — Detailed instructions and key box code will be sent 24 hours before. All guest details must be provided within 24 hours of arrival (legal requirement).</span>
+    </div>
+  </div>
+
+  <!-- DOVE MANGIARE -->
+  <div class="section-block">
+    <h2>🍽 <span class="it">Dove mangiare</span><span class="en">Where to eat</span></h2>
+    <div class="place-group">
+      <div class="place-distance">Cetica — 700 m</div>
+      <ul class="place-list">
+        <li><span class="name">Bar Ristoro Alimentari — La Piazza</span> <span class="tel">· Tel. 371 492 1369</span></li>
+      </ul>
+    </div>
+    <div class="place-group">
+      <div class="place-distance">Pagliericcio — 3 km</div>
+      <ul class="place-list">
+        <li><span class="name">Bar La Tana del Paglione</span> <span class="tel">· Tel. +39 388 817 7999</span></li>
+      </ul>
+    </div>
+    <div class="place-group">
+      <div class="place-distance">Strada in Casentino — 6 km</div>
+      <ul class="place-list">
+        <li><span class="name">Pub Pizzeria Street Saloon</span> <span class="tel">· Tel. 0575 572782</span> <span class="note it">Chiuso lunedì</span><span class="note en">Closed Monday</span></li>
+        <li><span class="name">Pizzeria Ristorante I Vecchi Telai</span> <span class="tel">· Tel. 0575 570327</span> <span class="note it">Chiuso lunedì</span><span class="note en">Closed Monday</span></li>
+      </ul>
+    </div>
+    <div class="place-group">
+      <div class="place-distance">Porrena — 10 km</div>
+      <ul class="place-list">
+        <li><span class="name">Ristorante Pub Atlantic Oil</span> <span class="tel">· Tel. 0575 550513</span> <span class="note it">Chiuso lunedì</span><span class="note en">Closed Monday</span></li>
+        <li><span class="name">Locanda Il Cocodè</span> <span class="tel">· Tel. 0575 500181</span> <span class="note it">Chiuso lunedì</span><span class="note en">Closed Monday</span></li>
+      </ul>
+    </div>
+    <div class="place-group">
+      <div class="place-distance">Poppi — 12 km</div>
+      <ul class="place-list">
+        <li><span class="name">Pub Pizzeria Rossobirra</span> <span class="tel">· Tel. 0575 527534</span> <span class="note it">Chiuso lunedì</span><span class="note en">Closed Monday</span></li>
+        <li><span class="name">Ristorante La Quolina</span> <span class="tel">· Tel. 0575 529739</span> <span class="note it">Chiuso lun/mar</span><span class="note en">Closed Mon/Tue</span></li>
+        <li><span class="name">Charlie Restaurant</span> <span class="tel">· Tel. 0575 183 4445</span> <span class="note it">Chiuso lunedì</span><span class="note en">Closed Monday</span></li>
+        <li><span class="name">Ristorante La Torricella</span> <span class="tel">· Tel. 0575 527045</span></li>
+      </ul>
+    </div>
+    <div class="place-group">
+      <div class="place-distance">Bibbiena — 19 km</div>
+      <ul class="place-list">
+        <li><span class="name">Birreria Pizzeria Porta de' Fabbri</span> <span class="tel">· Tel. 0575 594455</span> <span class="note it">Chiuso lunedì</span><span class="note en">Closed Monday</span></li>
+        <li><span class="name">Pub Pizzeria Babilonya</span> <span class="tel">· Tel. 0575 536353</span></li>
+        <li><span class="name">Ristorante La Bruschetteria</span> <span class="tel">· Tel. 366 980 7062</span> <span class="note it">Chiuso lunedì</span><span class="note en">Closed Monday</span></li>
+      </ul>
+    </div>
+    <div class="place-group">
+      <div class="place-distance">Moggiona — 21 km</div>
+      <ul class="place-list">
+        <li><span class="name">Ristorante Il Cedro</span> <span class="tel">· Tel. 0575 556080</span> <span class="note it">Chiuso lun/mar</span><span class="note en">Closed Mon/Tue</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- BAR / PANETTERIE -->
+  <div class="section-block">
+    <h2>☕ <span class="it">Bar &amp; Panetterie</span><span class="en">Bars &amp; Bakeries</span></h2>
+    <div class="place-group">
+      <div class="place-distance">Cetica — 700 m</div>
+      <ul class="place-list"><li><span class="name">Bar La Piazza</span> <span class="tel">· Tel. 371 492 1369</span></li></ul>
+    </div>
+    <div class="place-group">
+      <div class="place-distance">Pagliericcio — 3 km</div>
+      <ul class="place-list">
+        <li><span class="name">Bar La Tana del Paglione</span> <span class="tel">· Tel. +39 388 817 7999</span> <span class="note it">Bar tipico del borgo, colazioni e aperitivi</span><span class="note en">Village bar, breakfasts and aperitifs</span></li>
+      </ul>
+    </div>
+    <div class="place-group">
+      <div class="place-distance">Strada in Casentino — 6 km</div>
+      <ul class="place-list"><li><span class="name">Da Nerone</span> <span class="tel">· Tel. 0575 572960</span></li></ul>
+    </div>
+    <div class="place-group">
+      <div class="place-distance">Poppi — 12 km</div>
+      <ul class="place-list">
+        <li><span class="name">Forno Pasticceria Anima di Pane</span> <span class="tel">· Tel. 0575 500291</span></li>
+        <li><span class="name">Forno Bar Pietrini</span> <span class="tel">· Tel. 0575 529177</span> <span class="note it">Chiuso domenica</span><span class="note en">Closed Sunday</span></li>
+      </ul>
+    </div>
+    <div class="place-group">
+      <div class="place-distance">Bibbiena — 19 km</div>
+      <ul class="place-list">
+        <li><span class="name">Panificio F.lli Grassi</span> <span class="tel">· Tel. 0575 536536</span> <span class="note it">Via Industriale 1/B · Pane artigianale, pasticceria, torte su ordinazione · Lun–Sab 7:00–13:00 / 16:00–19:30 · Chiuso domenica</span><span class="note en">Via Industriale 1/B · Artisan bread, pastries, cakes to order · Mon–Sat 7:00–13:00 / 16:00–19:30 · Closed Sunday</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SUPERMERCATI -->
+  <div class="section-block">
+    <h2>🛒 <span class="it">Supermercati</span><span class="en">Supermarkets</span></h2>
+    <div class="place-group">
+      <div class="place-distance">Poppi — 12 km</div>
+      <ul class="place-list">
+        <li><span class="name">Supermercato Fatucchi (Crai)</span> <span class="tel">· Tel. 0575 520345</span> <span class="note it">Via Fiorentina 1 · Banco macelleria e gastronomia, prodotti locali del Casentino · Lun–Sab 8:30–13:00 / 16:30–20:00 · Dom 9:00–13:00</span><span class="note en">Via Fiorentina 1 · Butchery and deli counter, local Casentino products · Mon–Sat 8:30–13:00 / 16:30–20:00 · Sun 9:00–13:00</span></li>
+        <li><span class="name">Di Più</span> <span class="tel">· Tel. 0575 080273</span> <span class="note it">Via dei Guazzi 15/17 · Macelleria, gastronomia, pescheria, frutta e verdura · Lun–Gio 8:30–13:00 / 15:30–20:00 · Ven–Sab 8:30–20:00 · Dom 8:30–13:00</span><span class="note en">Via dei Guazzi 15/17 · Butchery, deli, fishmonger, fruit &amp; veg · Mon–Thu 8:30–13:00 / 15:30–20:00 · Fri–Sat 8:30–20:00 · Sun 8:30–13:00</span></li>
+      </ul>
+    </div>
+    <div class="place-group">
+      <div class="place-distance">Bibbiena — 19 km</div>
+      <ul class="place-list">
+        <li><span class="name">Coop</span> <span class="tel">· Tel. 0575 567599</span> <span class="note it">Via Rignano 10 · Centro Commerciale Il Casentino · Grande superficie, ampio assortimento</span><span class="note en">Via Rignano 10 · Il Casentino Shopping Centre · Large store, wide range</span></li>
+        <li><span class="name">Lidl</span> <span class="tel">· Tel. 800 480048</span> <span class="note it">Via Rosa Luxemburg 43/45/47 · Discount, prezzi competitivi · Lun–Sab 8:00–21:00 · Dom 9:00–21:00</span><span class="note en">Via Rosa Luxemburg 43/45/47 · Discount, competitive prices · Mon–Sat 8:00–21:00 · Sun 9:00–21:00</span></li>
+        <li><span class="name">Eurospin</span> <span class="tel">· Tel. 0575 539496</span> <span class="note it">Via Casamicciola · Discount, ottimo rapporto qualità-prezzo · Lun–Sab 9:00–13:30 / 15:30–19:00 · Dom 8:30–13:00 / 15:30–20:00</span><span class="note en">Via Casamicciola · Discount, great value for money · Mon–Sat 9:00–13:30 / 15:30–19:00 · Sun 8:30–13:00 / 15:30–20:00</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- REGOLE CASA -->
+  <div class="section-block">
+    <h2>📋 <span class="it">Regole della casa</span><span class="en">House rules</span></h2>
+    <ul class="rule-list">
+      <li class="rule-item"><span class="ri">🚭</span><span class="it">Vietato fumare in appartamento. Permesso sul terrazzo con il portacenere fornito.</span><span class="en">No smoking indoors. Permitted on the terrace using the ashtray provided.</span></li>
+      <li class="rule-item"><span class="ri">🎉</span><span class="it">Non sono consentite feste o eventi non autorizzati. Rispettare il silenzio dalle 22:00 alle 8:00.</span><span class="en">No unauthorised parties or events. Observe quiet hours 10 pm–8 am.</span></li>
+      <li class="rule-item"><span class="ri">👥</span><span class="it">Massimo 4 ospiti registrati. Non è possibile ospitare visitatori notturni non registrati.</span><span class="en">Maximum 4 registered guests. Non-registered overnight visitors are not permitted.</span></li>
+      <li class="rule-item"><span class="ri">♻</span><span class="it">Raccolta differenziata obbligatoria. I cassonetti si trovano a 50 m, vicino alla fermata del bus.</span><span class="en">Waste sorting is required. Bins are 50 m away, near the bus stop.</span></li>
+      <li class="rule-item"><span class="ri">🔑</span><span class="it">Al check-out: stoviglie lavate, rifiuti portati ai cassonetti, lenzuola impilate, chiavi nella cassettina.</span><span class="en">At check-out: wash dishes, take out rubbish, pile up linen, leave keys in the key box.</span></li>
+      <li class="rule-item"><span class="ri">💧</span><span class="it">L'acqua del rubinetto è potabile ed è ottima acqua di sorgente. Non acquistare acqua in bottiglia!</span><span class="en">Tap water is drinkable — excellent spring water. No need to buy bottled water!</span></li>
+      <li class="rule-item"><span class="ri">🌿</span><span class="it">Spegnere luci e apparecchi quando non in uso. Aiutateci a proteggere l'ambiente del Casentino.</span><span class="en">Switch off lights and appliances when not in use. Help us protect the Casentino environment.</span></li>
+    </ul>
+  </div>
+
+  <!-- COSA VEDERE -->
+  <div class="section-block">
+    <h2>🗺 <span class="it">Cosa vedere</span><span class="en">What to see</span></h2>
+    <div class="see-grid">
+      <div class="see-card">
+        <h4 class="it">⛪ Luoghi religiosi</h4><h4 class="en">⛪ Religious sites</h4>
+        <ul>
+          <li class="it">Chiesa romanica di San Michele (Cetica)</li><li class="en">Romanesque Church of San Michele (Cetica)</li>
+          <li class="it">Monastero ed Eremo di Camaldoli</li><li class="en">Camaldoli Monastery &amp; Hermitage</li>
+          <li class="it">Santuario della Verna</li><li class="en">La Verna Sanctuary</li>
+          <li class="it">Abbazia di Vallombrosa</li><li class="en">Vallombrosa Abbey</li>
+          <li class="it">Pieve di San Pietro (Romena)</li><li class="en">Pieve di San Pietro (Romena)</li>
+        </ul>
+      </div>
+      <div class="see-card">
+        <h4 class="it">🏰 Castelli &amp; Musei</h4><h4 class="en">🏰 Castles &amp; Museums</h4>
+        <ul>
+          <li class="it">Castello di Poppi</li><li class="en">Poppi Castle</li>
+          <li class="it">Castello di Romena</li><li class="en">Romena Castle</li>
+          <li class="it">Ecomuseo del Carbonaio (Cetica)</li><li class="en">Charcoal Makers Ecomuseum (Cetica)</li>
+          <li class="it">Museo della Lana (Stia)</li><li class="en">Wool Museum (Stia)</li>
+          <li class="it">Museo Archeologico (Bibbiena)</li><li class="en">Archaeological Museum (Bibbiena)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SENTIERI -->
+  <div class="section-block">
+    <h2>🥾 <span class="it">Sentieri CAI dal borgo</span><span class="en">CAI trails from the hamlet</span></h2>
+    <ul class="trail-list">
+      <li>Sentiero CAI 00 di Pratomagno</li>
+      <li>Sentiero CAI 29A Cetica – Varco di Reggello</li>
+      <li>Sentiero CAI 29 Cetica – Bibbiena</li>
+      <li>Sentiero CAI 54 Cetica – Varco di Gastra</li>
+      <li>Sentiero CAI 42 Strada in Casentino – Croce del Pratomagno</li>
+      <li class="it">Sentieri del Parco Nazionale delle Foreste Casentinesi</li><li class="en">National Park of the Casentino Forests trails</li>
+    </ul>
+  </div>
+
+  <!-- LINK UTILI -->
+  <div class="section-block">
+    <h2>🔗 <span class="it">Link utili</span><span class="en">Useful links</span></h2>
+    <ul class="link-list">
+      <li><a href="https://www.parcoforestecasentinesi.it" target="_blank" rel="noopener">parcoforestecasentinesi.it</a> — <span class="it">Parco Nazionale</span><span class="en">National Park</span></li>
+      <li><a href="https://www.casentino.it" target="_blank" rel="noopener">casentino.it</a> — <span class="it">Turismo Casentino</span><span class="en">Casentino tourism</span></li>
+      <li><a href="https://www.ecomuseo.casentino.toscana.it" target="_blank" rel="noopener">ecomuseo.casentino.toscana.it</a> — Ecomusei</li>
+      <li><a href="https://www.wikiloc.com/percorsi-escursionismo/cetica-bibbiena-4269558" target="_blank" rel="noopener">Wikiloc — Cetica–Bibbiena</a></li>
+      <li><a href="https://www.pratomagno.it/index.php/sentieri" target="_blank" rel="noopener">pratomagno.it</a> — <span class="it">Sentieri del Pratomagno</span><span class="en">Pratomagno trails</span></li>
+    </ul>
+  </div>
+
+  <div style="text-align:center;padding:2rem 0;border-top:1px solid var(--border-light);margin-top:1rem">
+    <a href="index.html" class="it" style="display:inline-block;font-size:.82rem;font-weight:700;color:#fff;background:var(--fern);text-decoration:none;letter-spacing:.06em;text-transform:uppercase;padding:.55rem 1.4rem;border-radius:6px;transition:opacity .2s" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">← Torna al sito principale</a>
+    <a href="index.html" class="en" style="display:inline-block;font-size:.82rem;font-weight:700;color:#fff;background:var(--fern);text-decoration:none;letter-spacing:.06em;text-transform:uppercase;padding:.55rem 1.4rem;border-radius:6px;transition:opacity .2s" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">← Back to main site</a>
+  </div>
+</div>
+<script>
+function setLang(l){document.body.className='lang-'+l;document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.lang-btn')[l==='it'?0:1].classList.add('active')}
+</script>
+</body>
+</html>
