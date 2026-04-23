@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raccolta Differenziata — Pratomagno Apartment</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --forest:#1B4332;--mid:#2D6A4F;--sage:#52B788;--pale:#D8F3DC;
+  --cream:#FAFAF7;--paper:#FFFFFF;--ink:#1C1C1A;--muted:#4A4946;
+  --border:#D8D5CC;--radius:12px;--radius-sm:6px;
+}
+:focus-visible{outline:3px solid #0066CC;outline-offset:3px;border-radius:4px}
+body.lang-en .it{display:none!important}
+body.lang-it .en{display:none!important}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);font-size:16px;line-height:1.6}
+
+.page-header{background:var(--forest);padding:2.5rem 1.5rem 2rem;text-align:center;position:relative;overflow:hidden}
+.page-header::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 40px,rgba(255,255,255,.015) 40px,rgba(255,255,255,.015) 80px)}
+.back-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--sage);text-decoration:none;letter-spacing:.04em;margin-bottom:1.25rem;position:relative;z-index:1}
+.back-link:hover{color:#fff}
+.page-eyebrow{font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--sage);margin-bottom:.6rem;position:relative;z-index:1}
+.page-header h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,3rem);font-weight:400;color:#fff;line-height:1.1;margin-bottom:.4rem;position:relative;z-index:1}
+.page-header h1 em{font-style:italic;color:var(--pale)}
+.page-header-sub{font-size:14px;color:rgba(255,255,255,.7);position:relative;z-index:1}
+
+.lang-bar{background:var(--mid);padding:.55rem 1.5rem;display:flex;justify-content:center;gap:8px}
+.lang-btn{font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;padding:5px 16px;border-radius:20px;border:1.5px solid rgba(255,255,255,.3);background:transparent;color:rgba(255,255,255,.8);cursor:pointer;transition:background .15s;min-height:34px}
+.lang-btn.active{background:#fff;color:var(--forest);border-color:#fff}
+
+.container{max-width:800px;margin:0 auto;padding:2rem 1.25rem 4rem}
+
+/* intro text */
+.intro-text{font-size:15px;color:var(--muted);line-height:1.75;margin-bottom:2rem;text-align:center;max-width:620px;margin-left:auto;margin-right:auto}
+
+/* Bin cards */
+.bins-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-bottom:2rem}
+.bin-card{border-radius:var(--radius);overflow:hidden;border:2px solid transparent}
+.bin-card.brown {border-color:#8B5E3C;background:#FDF6EE}
+.bin-card.blue  {border-color:#1A5276;background:#EBF5FB}
+.bin-card.yellow{border-color:#B7950B;background:#FEFDE7}
+.bin-card.green {border-color:#1E8449;background:#EAFAF1}
+.bin-card.grey  {border-color:#717D7E;background:#F2F3F4}
+.bin-header{padding:.75rem 1rem;display:flex;align-items:center;gap:.75rem}
+.bin-card.brown  .bin-header{background:#8B5E3C}
+.bin-card.blue   .bin-header{background:#1A5276}
+.bin-card.yellow .bin-header{background:#B7950B}
+.bin-card.green  .bin-header{background:#1E8449}
+.bin-card.grey   .bin-header{background:#717D7E}
+.bin-emoji{font-size:1.6rem}
+.bin-name{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;color:#fff;line-height:1.2}
+.bin-name small{display:block;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:400;opacity:.85;font-style:italic}
+.bin-body{padding:1rem}
+.bin-examples{font-size:13px;color:var(--ink);line-height:1.6}
+.bin-examples strong{display:block;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:.35rem}
+
+/* Composter */
+.composter-box{background:var(--paper);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;margin-bottom:2rem}
+.composter-box h2{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:500;color:var(--forest);margin-bottom:.3rem;display:flex;align-items:center;gap:.5rem}
+.composter-sub{font-size:13px;color:var(--muted);margin-bottom:1rem}
+.composter-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.compost-yes{background:#EAFAF1;border:1px solid #82E0AA;border-radius:var(--radius-sm);padding:1rem}
+.compost-no {background:#FDEDEC;border:1px solid #F5B7B1;border-radius:var(--radius-sm);padding:1rem}
+.compost-label{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.5rem}
+.compost-yes .compost-label{color:#1E8449}
+.compost-no  .compost-label{color:#C0392B}
+.compost-items{font-size:13px;line-height:1.7;color:var(--ink)}
+
+/* Location info */
+.location-box{background:var(--forest);border-radius:var(--radius);padding:1.5rem;color:#fff;margin-bottom:2rem;display:flex;align-items:flex-start;gap:1rem}
+.location-icon{font-size:2rem;flex-shrink:0}
+.location-text h3{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:500;margin-bottom:.3rem}
+.location-text p{font-size:14px;color:rgba(255,255,255,.78);line-height:1.65}
+
+/* Quote */
+.eco-quote{text-align:center;font-size:14px;color:var(--muted);font-style:italic;padding:1.5rem;border-top:1px solid var(--border);line-height:1.7}
+
+.page-footer{text-align:center;font-size:12px;color:var(--muted);padding:1.5rem;border-top:1px solid var(--border);line-height:1.7}
+.page-footer a{color:var(--mid);text-decoration:none}
+.page-footer a:hover{text-decoration:underline}
+
+@media(max-width:500px){
+  .composter-grid{grid-template-columns:1fr}
+  .bins-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body class="lang-it">
+
+<div class="page-header">
+  <a href="index.html" class="back-link">← <span class="it">Homepage</span><span class="en">Homepage</span></a>
+  <p class="page-eyebrow">Pratomagno Apartment · Castagneto-Cetica</p>
+  <h1><span class="it">♻ Raccolta <em>Differenziata</em></span><span class="en">♻ Waste <em>Recycling</em></span></h1>
+  <p class="page-header-sub it">Aiutaci a proteggere il Casentino</p>
+  <p class="page-header-sub en">Help us protect our Casentino Valley</p>
+</div>
+
+<div class="lang-bar">
+  <button class="lang-btn active" onclick="setLang('it')">🇮🇹 Italiano</button>
+  <button class="lang-btn" onclick="setLang('en')">🇬🇧 English</button>
+</div>
+
+<div class="container">
+
+  <p class="intro-text it">Castagneto è un borgo immerso nella natura. Vi preghiamo di separare i rifiuti seguendo queste indicazioni — grazie per la collaborazione!</p>
+  <p class="intro-text en">We are surrounded by nature. Please sort your waste as indicated below — thank you for your cooperation!</p>
+
+  <!-- Bin cards -->
+  <div class="bins-grid" role="list">
+
+    <div class="bin-card brown" role="listitem">
+      <div class="bin-header">
+        <span class="bin-emoji" aria-hidden="true">🟤</span>
+        <div class="bin-name">
+          <span class="it">ORGANICO</span><span class="en">ORGANIC</span>
+          <small><span class="it">Bidone Marrone / Compostiera</span><span class="en">Brown Bin / Composter</span></small>
+        </div>
+      </div>
+      <div class="bin-body">
+        <div class="bin-examples">
+          <strong><span class="it">Esempi</span><span class="en">Examples</span></strong>
+          <span class="it">Scarti di cibo, bucce di frutta, fondi di caffè, filtri del tè, avanzi di cucina</span>
+          <span class="en">Food scraps, fruit peels, coffee grounds, tea filters, kitchen leftovers</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="bin-card blue" role="listitem">
+      <div class="bin-header">
+        <span class="bin-emoji" aria-hidden="true">🔵</span>
+        <div class="bin-name">
+          <span class="it">CARTA</span><span class="en">PAPER</span>
+          <small><span class="it">Bidone Blu</span><span class="en">Blue Bin</span></small>
+        </div>
+      </div>
+      <div class="bin-body">
+        <div class="bin-examples">
+          <strong><span class="it">Esempi</span><span class="en">Examples</span></strong>
+          <span class="it">Giornali, scatole di cartone, tetrapak, carta pulita, libri, riviste</span>
+          <span class="en">Newspapers, cardboard boxes, tetra pak, clean paper, books, magazines</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="bin-card yellow" role="listitem">
+      <div class="bin-header">
+        <span class="bin-emoji" aria-hidden="true">🟡</span>
+        <div class="bin-name">
+          <span class="it">PLASTICA &amp; METALLO</span><span class="en">PLASTIC &amp; METAL</span>
+          <small><span class="it">Bidone Giallo</span><span class="en">Yellow Bin</span></small>
+        </div>
+      </div>
+      <div class="bin-body">
+        <div class="bin-examples">
+          <strong><span class="it">Esempi</span><span class="en">Examples</span></strong>
+          <span class="it">Bottiglie, flaconi, lattine, vaschette, pellicola alimentare, carta stagnola, tubetti vuoti</span>
+          <span class="en">Bottles, flasks, cans, trays, food film, aluminium foil, empty tubes</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="bin-card green" role="listitem">
+      <div class="bin-header">
+        <span class="bin-emoji" aria-hidden="true">🟢</span>
+        <div class="bin-name">
+          <span class="it">VETRO</span><span class="en">GLASS</span>
+          <small><span class="it">Bidone Verde</span><span class="en">Green Bin</span></small>
+        </div>
+      </div>
+      <div class="bin-body">
+        <div class="bin-examples">
+          <strong><span class="it">Esempi</span><span class="en">Examples</span></strong>
+          <span class="it">Bottiglie e barattoli di vetro</span>
+          <span class="en">Glass bottles and jars</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="bin-card grey" role="listitem">
+      <div class="bin-header">
+        <span class="bin-emoji" aria-hidden="true">⚫</span>
+        <div class="bin-name">
+          <span class="it">INDIFFERENZIATO</span><span class="en">NON-RECYCLABLE</span>
+          <small><span class="it">Bidone Grigio</span><span class="en">Grey Bin</span></small>
+        </div>
+      </div>
+      <div class="bin-body">
+        <div class="bin-examples">
+          <strong><span class="it">Esempi</span><span class="en">Examples</span></strong>
+          <span class="it">Pannolini, mozziconi, polvere, ceramica, carta sporca, rasoio usa e getta, spazzolini</span>
+          <span class="en">Nappies, cigarette stubs, dust, ceramics, dirty paper, disposable razors, toothbrushes</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- .bins-grid -->
+
+  <!-- Composter -->
+  <div class="composter-box">
+    <h2><span aria-hidden="true">🌱</span> <span class="it">La nostra Compostiera — Il nostro orgoglio!</span><span class="en">Our Composter — Our pride!</span></h2>
+    <p class="composter-sub it">Trasformiamo gli scarti alimentari in concime naturale per il nostro giardino.</p>
+    <p class="composter-sub en">We transform food scraps into natural fertiliser for our garden.</p>
+    <div class="composter-grid">
+      <div class="compost-yes">
+        <div class="compost-label">✅ <span class="it">Sì / Yes</span><span class="en">Yes</span></div>
+        <div class="compost-items it">Frutta · Verdura · Gusci d'uovo · Bustine di tè · Fondi di caffè · Tappi di sughero · Materiali compostabili</div>
+        <div class="compost-items en">Fruit · Vegetables · Eggshells · Tea bags · Coffee grounds · Cork stoppers · Compostable materials</div>
+      </div>
+      <div class="compost-no">
+        <div class="compost-label">❌ <span class="it">No</span><span class="en">No</span></div>
+        <div class="compost-items it">Carne · Pesce · Latticini · Formaggi · Latte · Plastica (anche se "bio")</div>
+        <div class="compost-items en">Meat · Fish · Dairy · Cheese · Milk · Plastic (even if labelled "bio")</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Where are the bins -->
+  <div class="location-box">
+    <span class="location-icon" aria-hidden="true">📍</span>
+    <div class="location-text">
+      <h3 class="it">Dove sono i cassonetti?</h3>
+      <h3 class="en">Where are the bins?</h3>
+      <p class="it">I bidoni principali si trovano a circa <strong style="color:#fff">50 metri</strong> dall'abitazione, vicino alla fermata dell'autobus.</p>
+      <p class="en">The main waste collection point is located approximately <strong style="color:#fff">50 metres</strong> from the house, near the bus stop.</p>
+    </div>
+  </div>
+
+  <div class="eco-quote">
+    🌿 <em>"Non ereditiamo la terra dai nostri padri, la prendiamo in prestito dai nostri figli."</em><br>
+    <span class="it">Grazie per la collaborazione!</span><span class="en">Thank you for your cooperation!</span>
+  </div>
+
+  <div style="text-align:center;padding:1.5rem 0 .5rem">
+    <a href="index.html" class="it" style="display:inline-block;font-size:.82rem;font-weight:700;color:#fff;background:var(--mid);text-decoration:none;letter-spacing:.06em;text-transform:uppercase;padding:.55rem 1.4rem;border-radius:6px" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">← Torna al sito principale</a>
+    <a href="index.html" class="en" style="display:inline-block;font-size:.82rem;font-weight:700;color:#fff;background:var(--mid);text-decoration:none;letter-spacing:.06em;text-transform:uppercase;padding:.55rem 1.4rem;border-radius:6px" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">← Back to main site</a>
+  </div>
+
+</div><!-- .container -->
+
+<div class="page-footer">
+  Pratomagno Apartment · Loc. Castagneto-Cetica 173 · Castel San Niccolò (AR) 52018<br>
+  <a href="mailto:pratomagnoapartment@gmail.com">pratomagnoapartment@gmail.com</a>
+  · <a href="tel:+390575555106">+39 0575 555106</a>
+  · <a href="index.html">← Homepage</a>
+</div>
+
+<script>
+function setLang(lang){
+  document.body.className='lang-'+lang;
+  document.querySelectorAll('.lang-btn').forEach((b,i)=>{
+    b.classList.toggle('active',(i===0&&lang==='it')||(i===1&&lang==='en'));
+  });
+  document.documentElement.lang=lang;
+  try{localStorage.setItem('prato-lang',lang);}catch(e){}
+}
+(function(){
+  let s;try{s=localStorage.getItem('prato-lang');}catch(e){}
+  if(s==='en')setLang('en');
+})();
+</script>
+</body>
+</html>
