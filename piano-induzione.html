@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Piano a Induzione — Pratomagno Apartment</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,900;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--linen:#fdf9f2;--parchment:#f5eedd;--stone:#e8dcc8;--ink:#2c2416;--ink2:#4a3d2e;--muted:#7a6a52;--moss:#3a6b2a;--fern:#4e8a38;--sage:#78b060;--pale-green:#dff0d4;--sage-tint:#eef6e8;--terracotta:#b8501a;--gold:#9a7010;--border:#ddd0b8;--border-light:#eae0cc;--r:10px}
+body{font-family:'Lato',sans-serif;font-weight:300;background:var(--linen);color:var(--ink);line-height:1.65;font-size:16px}
+body.lang-en .it{display:none!important}
+body.lang-it .en{display:none!important}
+.topnav{position:sticky;top:0;z-index:100;background:rgba(253,249,242,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border-light);padding:.75rem 2rem;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--ink);text-decoration:none}
+.nav-brand em{font-style:italic;color:var(--moss)}
+.nav-back{font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--fern);text-decoration:none}
+.nav-back:hover{text-decoration:underline}
+.lang-toggle{display:flex;gap:3px}
+.lang-btn{font-family:'Lato',sans-serif;font-size:.72rem;font-weight:700;padding:.3rem .65rem;border:1px solid var(--border);background:transparent;color:var(--muted);border-radius:4px;cursor:pointer;transition:all .15s}
+.lang-btn.active{background:var(--moss);color:#fff;border-color:var(--moss)}
+.container{max-width:800px;margin:0 auto;padding:2.5rem 1.5rem 5rem}
+.page-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3rem);font-weight:900;color:var(--ink);margin-bottom:.5rem;letter-spacing:-.02em}
+.page-title em{font-style:italic;color:var(--moss)}
+.page-subtitle{font-size:.95rem;color:var(--muted);margin-bottom:2.5rem;line-height:1.6}
+.section-block{margin-bottom:2.5rem}
+.section-block h2{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:600;color:var(--moss);margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+
+/* STEPS */
+.steps{display:flex;flex-direction:column;gap:.75rem}
+.step{display:flex;gap:1rem;align-items:flex-start;background:#fff;border-radius:var(--r);padding:1rem 1.1rem;border:1px solid var(--border-light)}
+.step-num{width:32px;height:32px;border-radius:50%;background:var(--moss);color:#fff;font-size:.82rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.step-body{}
+.step-body strong{font-weight:700;color:var(--ink);display:block;margin-bottom:.2rem;font-size:.9rem}
+.step-body p{font-size:.85rem;color:var(--ink2);line-height:1.6}
+.step-body em{font-style:italic;color:var(--muted)}
+
+/* WARNING */
+.warning-box{background:#fff3cd;border:1px solid #ffc107;border-left:4px solid #ff6b35;border-radius:var(--r);padding:1.1rem 1.3rem;margin-bottom:1.5rem}
+.warning-box .wt{font-weight:700;color:#b84a00;font-size:.9rem;margin-bottom:.35rem}
+.warning-box p{font-size:.86rem;color:var(--ink2);line-height:1.6}
+
+/* POWER TABLE */
+.power-table{width:100%;border-collapse:collapse;border-radius:var(--r);overflow:hidden;border:1px solid var(--border-light);margin-bottom:1.5rem}
+.power-table th{background:var(--moss);color:#fff;text-align:left;padding:.75rem 1rem;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase}
+.power-table td{padding:.75rem 1rem;font-size:.84rem;border-bottom:1px solid var(--border-light);vertical-align:top;line-height:1.55}
+.power-table tr:last-child td{border-bottom:none}
+.power-table tr:nth-child(even) td{background:var(--sage-tint)}
+.level-badge{display:inline-block;background:var(--moss);color:#fff;font-weight:700;font-size:.8rem;padding:.2rem .55rem;border-radius:4px;min-width:36px;text-align:center}
+.level-badge.booster{background:var(--terracotta)}
+
+/* DO / DON'T */
+.do-dont{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem}
+.dd-col{background:#fff;border-radius:var(--r);border:1px solid var(--border-light);padding:1.1rem}
+.dd-col h4{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;margin-bottom:.75rem;display:flex;align-items:center;gap:.4rem}
+.dd-col.dont h4{color:var(--terracotta)}
+.dd-col.do h4{color:var(--fern)}
+.dd-col ul{list-style:none;font-size:.83rem;color:var(--ink2);line-height:1.8}
+.dd-col.do ul li::before{content:'✅ '}
+.dd-col.dont ul li::before{content:'❌ '}
+
+/* TIPS */
+.tips{background:var(--sage-tint);border-radius:var(--r);padding:1.25rem 1.4rem;border:1px solid rgba(78,138,56,.2)}
+.tips h3{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--moss);margin-bottom:.9rem}
+.tip-item{display:flex;gap:.7rem;align-items:flex-start;font-size:.86rem;color:var(--ink2);margin-bottom:.65rem;line-height:1.6}
+.tip-item:last-child{margin-bottom:0}
+.tip-icon{font-size:1rem;flex-shrink:0;padding-top:.1rem}
+
+@media(max-width:600px){.do-dont{grid-template-columns:1fr}.topnav{padding:.6rem 1rem}}
+</style>
+</head>
+<body class="lang-it">
+<nav class="topnav">
+  <a href="index.html" class="nav-brand">Pratomagno <em>Apartment</em></a>
+  <a href="index.html" class="nav-back">← <span class="it">Torna al sito</span><span class="en">Back to site</span></a>
+  <div class="lang-toggle">
+    <button class="lang-btn active" onclick="setLang('it')">IT</button>
+    <button class="lang-btn" onclick="setLang('en')">EN</button>
+  </div>
+</nav>
+<div class="container">
+  <h1 class="page-title">🍳 <span class="it">Piano a <em>Induzione</em></span><span class="en">Induction <em>Hob Guide</em></span></h1>
+  <p class="page-subtitle it">Guida rapida per usare il piano cottura a induzione / Induction Hob Quick Guide</p>
+  <p class="page-subtitle en">Induction Hob Quick Guide / Guida rapida per usare il piano cottura a induzione</p>
+
+  <!-- ACCENSIONE -->
+  <div class="section-block">
+    <h2>⚡ <span class="it">Accensione e Spegnimento</span><span class="en">Turn On / Off</span></h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <strong class="it">Accendi il piano</strong><strong class="en">Turn on the hob</strong>
+          <p class="it">Tenere premuto il tasto <strong>accensione</strong> per 1 secondo.<br><em>Press and hold the power button for 1 second.</em></p>
+          <p class="en">Press and hold the <strong>power button</strong> for 1 second.<br><em>Tenere premuto il tasto accensione per 1 secondo.</em></p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <strong class="it">Posiziona la pentola</strong><strong class="en">Place the pot</strong>
+          <p class="it">Appoggia una pentola adatta all'induzione al centro della zona desiderata.<br><em>Place an induction-compatible pot in the centre of the cooking zone.</em></p>
+          <p class="en">Place an induction-compatible pot in the centre of the cooking zone.<br><em>Appoggia una pentola adatta all'induzione al centro della zona desiderata.</em></p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <strong class="it">Seleziona la zona di cottura</strong><strong class="en">Select the cooking zone</strong>
+          <p class="it">Premi il tasto corrispondente alla zona. Sul display apparirà <strong>"0"</strong>.<br><em>Press the zone button. "0" will appear on the display.</em></p>
+          <p class="en">Press the corresponding zone button. <strong>"0"</strong> will appear on the display.<br><em>Premi il tasto corrispondente alla zona. Sul display apparirà "0".</em></p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <strong class="it">Regola la potenza</strong><strong class="en">Adjust the power</strong>
+          <p class="it">Usa i tasti <strong>"+"</strong> o <strong>"−"</strong> per impostare la potenza da <strong>1 a 9</strong>. Per la massima potenza istantanea seleziona <strong>"P" (Booster)</strong>.<br><em>Use "+" or "−" to set power from 1 to 9. Select "P" for maximum boost.</em></p>
+          <p class="en">Use <strong>"+"</strong> or <strong>"−"</strong> to set power from <strong>1 to 9</strong>. Select <strong>"P" (Booster)</strong> for maximum instant power.<br><em>Usa "+" o "−" per la potenza da 1 a 9. Seleziona "P" per il booster.</em></p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <strong class="it">Spegni una zona</strong><strong class="en">Turn off a zone</strong>
+          <p class="it">Premi il tasto <strong>"−"</strong> fino a riportare il livello a <strong>"0"</strong>.<br><em>Press "−" until the level returns to "0".</em></p>
+          <p class="en">Press the <strong>"−"</strong> button until the level returns to <strong>"0"</strong>.<br><em>Premi "−" fino a riportare il livello a "0".</em></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WARNING -->
+  <div class="warning-box">
+    <div class="wt">⚠️ <span class="it">Attenzione: Calore Residuo / Caution: Residual Heat</span><span class="en">Caution: Residual Heat / Attenzione: Calore Residuo</span></div>
+    <p class="it">Se sul display appare una <strong>"H"</strong> dopo aver spento la zona, significa che il piano è ancora <strong>caldo</strong>. <strong>NON TOCCARE!</strong><br><em>If "H" appears after switching off, the hob surface is still hot. DO NOT TOUCH!</em></p>
+    <p class="en">If <strong>"H"</strong> appears on the display after turning off, the hob surface is still <strong>hot</strong>. <strong>DO NOT TOUCH!</strong><br><em>Se appare "H", il piano è ancora caldo. NON TOCCARE!</em></p>
+  </div>
+
+  <!-- BLOCCO SICUREZZA -->
+  <div class="section-block">
+    <h2>🔒 <span class="it">Blocco Sicurezza</span><span class="en">Control Panel Lock</span></h2>
+    <div class="step" style="background:#fff;border-radius:var(--r);padding:1rem 1.1rem;border:1px solid var(--border-light)">
+      <div style="font-size:1.4rem">🔒</div>
+      <div>
+        <p style="font-size:.87rem;color:var(--ink2);line-height:1.65" class="it">Per evitare accensioni accidentali, tenere premuto il tasto <strong>"My Menu / Blocco"</strong> per <strong>3 secondi</strong>.<br><em>To prevent accidental switching on, press and hold "My Menu/Lock" for 3 seconds.</em></p>
+        <p style="font-size:.87rem;color:var(--ink2);line-height:1.65" class="en">To prevent accidental switching on, press and hold the <strong>"My Menu / Lock"</strong> button for <strong>3 seconds</strong>.<br><em>Per evitare accensioni accidentali, tenere premuto "My Menu/Blocco" per 3 secondi.</em></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LIVELLI DI POTENZA -->
+  <div class="section-block">
+    <h2>🌡 <span class="it">Livelli di Potenza</span><span class="en">Power Levels</span></h2>
+    <table class="power-table">
+      <thead>
+        <tr>
+          <th class="it">Livello</th><th class="en">Level</th>
+          <th class="it">Potenza</th><th class="en">Power</th>
+          <th class="it">Ideale per…</th><th class="en">Best for…</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><span class="level-badge booster">P</span></td><td><strong>BOOSTER</strong></td><td class="it">Bollitura rapida acqua e liquidi</td><td class="en">Rapid boiling of water and liquids</td></tr>
+        <tr><td><span class="level-badge">8–9</span></td><td><strong class="it">MAX</strong><strong class="en">MAX</strong></td><td class="it">Rosolare, friggere surgelati, iniziare cotture</td><td class="en">Browning, frying frozen food, starting dishes</td></tr>
+        <tr><td><span class="level-badge">6–7</span></td><td><strong class="it">ALTO</strong><strong class="en">HIGH</strong></td><td class="it">Grigliare e soffriggere carne e verdure</td><td class="en">Grilling and sautéing meat and vegetables</td></tr>
+        <tr><td><span class="level-badge">4–5</span></td><td><strong class="it">MEDIO</strong><strong class="en">MEDIUM</strong></td><td class="it">Stufare, mantecare la pasta, cotture medie</td><td class="en">Stewing, creaming pasta, medium cooking</td></tr>
+        <tr><td><span class="level-badge">2–3</span></td><td><strong class="it">BASSO</strong><strong class="en">LOW</strong></td><td class="it">Sobbollire, cotture lunghe con liquidi</td><td class="en">Simmering, slow cooking with liquids</td></tr>
+        <tr><td><span class="level-badge">1</span></td><td><strong>MIN</strong></td><td class="it">Sciogliere burro/cioccolato, scaldare piatti</td><td class="en">Melting butter/chocolate, keeping food warm</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- PULIZIA -->
+  <div class="section-block">
+    <h2>🧼 <span class="it">Pulizia e Manutenzione</span><span class="en">Cleaning and Maintenance</span></h2>
+    <div class="do-dont">
+      <div class="dd-col dont">
+        <h4>❌ <span class="it">NON fare</span><span class="en">Do NOT</span></h4>
+        <ul>
+          <li class="it">Usare spugne abrasive o pagliette</li><li class="en">Use abrasive sponges or scouring pads</li>
+          <li class="it">Usare pulitori a vapore</li><li class="en">Use steam cleaners</li>
+          <li class="it">Usare detergenti comuni</li><li class="en">Use common household cleaners</li>
+          <li class="it">Graffiare con oggetti metallici</li><li class="en">Scratch with metal objects</li>
+        </ul>
+      </div>
+      <div class="dd-col do">
+        <h4>✅ <span class="it">Fare</span><span class="en">Do</span></h4>
+        <ul>
+          <li class="it">Pulire solo quando è freddo</li><li class="en">Clean only when cool</li>
+          <li class="it">Rimuovere residui subito dopo l'uso</li><li class="en">Remove stains immediately after use</li>
+          <li class="it">Usare panno morbido e detergente specifico</li><li class="en">Use soft cloth and special hob cleaner</li>
+          <li class="it">Raschietto solo per residui bruciati</li><li class="en">Scraper only for stubborn burnt residue</li>
+        </ul>
+      </div>
+    </div>
+    <div class="warning-box" style="background:#fff3e0;border-color:#ff9800;border-left-color:#e65100">
+      <div class="wt" style="color:#e65100">⚠️ <span class="it">Sale, zucchero e sabbia possono graffiare la superficie. Rimuovere immediatamente!</span><span class="en">Salt, sugar, and sand can scratch the surface. Remove immediately!</span></div>
+    </div>
+  </div>
+
+  <!-- TIPS -->
+  <div class="tips">
+    <h3>💡 <span class="it">Consigli per gli ospiti</span><span class="en">Tips for guests</span></h3>
+    <div class="tip-item"><span class="tip-icon">⚡</span><div><strong class="it">Velocità:</strong><strong class="en">Speed:</strong> <span class="it">L'induzione è molto più rapida del gas. Non lasciare mai pentole vuote sul piano acceso.</span><span class="en">Induction is much faster than gas. Never leave empty pans on a live zone.</span></div></div>
+    <div class="tip-item"><span class="tip-icon">🛡</span><div><strong class="it">Sicurezza:</strong><strong class="en">Safety:</strong> <span class="it">Il piano si attiva solo se rileva una pentola adatta. Non funziona con pentole non magnetiche.</span><span class="en">The hob only heats when a suitable (magnetic) pan is detected.</span></div></div>
+    <div class="tip-item"><span class="tip-icon">🌿</span><div><strong class="it">Eco:</strong><strong class="en">Eco:</strong> <span class="it">Una volta raggiunto il bollore, scendi al livello 4–5 per risparmiare energia mantenendo la stessa temperatura.</span><span class="en">Once boiling, lower to level 4–5 to save energy while maintaining the same heat.</span></div></div>
+  </div>
+
+  <div style="text-align:center;padding:2rem 0;border-top:1px solid var(--border-light);margin-top:2rem">
+    <p style="font-size:.82rem;color:var(--muted);font-style:italic;margin-bottom:1rem">🌿 <span class="it">Grazie per aiutarci a rispettare l'ambiente.</span><span class="en">Thank you for helping us protect the environment.</span></p>
+    <a href="index.html" class="it" style="display:inline-block;font-size:.82rem;font-weight:700;color:#fff;background:var(--fern);text-decoration:none;letter-spacing:.06em;text-transform:uppercase;padding:.55rem 1.4rem;border-radius:6px" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">← Torna al sito principale</a>
+    <a href="index.html" class="en" style="display:inline-block;font-size:.82rem;font-weight:700;color:#fff;background:var(--fern);text-decoration:none;letter-spacing:.06em;text-transform:uppercase;padding:.55rem 1.4rem;border-radius:6px" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">← Back to main site</a>
+  </div>
+</div>
+<script>
+function setLang(l){document.body.className='lang-'+l;document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.lang-btn')[l==='it'?0:1].classList.add('active')}
+</script>
+</body>
+</html>
