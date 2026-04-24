@@ -19,6 +19,9 @@ html[lang="it"] .en { display: none !important; }
 span.en, span.it { display: inline !important; }
 html[lang="en"] span.it { display: none !important; }
 html[lang="it"] span.en { display: none !important; }
+small.en, small.it { display: inline !important; }
+html[lang="en"] small.it { display: none !important; }
+html[lang="it"] small.en { display: none !important; }
 
 a { color: #2c4a3e; }
 a:hover { text-decoration: underline; }
@@ -48,11 +51,11 @@ nav {
 }
 .nav-logo { font-size: 1.05rem; color: #fff; text-decoration: none; font-family: Georgia, serif; white-space: nowrap; }
 .nav-logo em { color: #dde8e2; }
-.nav-links { display: flex; flex-wrap: wrap; gap: 2px; list-style: none; }
+.nav-links { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; }
 .nav-links a {
   font-family: Arial, sans-serif; font-size: 10px; letter-spacing: .07em;
   text-transform: uppercase; font-weight: bold; color: rgba(255,255,255,.75);
-  text-decoration: none; padding: .3rem .45rem;
+  text-decoration: none; padding: .3rem .65rem;
   border-bottom: 2px solid transparent;
 }
 .nav-links a:hover { color: #fff; border-bottom-color: #dde8e2; }
@@ -205,7 +208,8 @@ blockquote {
 .tr-title { font-weight: bold; font-size: 1rem; margin-bottom: .25rem; }
 .tr-stats { font-family: Arial, sans-serif; font-size: 12px; color: #6b5c42; margin-bottom: .25rem; }
 .tr-desc { font-size: 13px; color: #3e3020; }
-.cai-badge { background: #2c4a3e; color: #fff; font-size: 10px; font-weight: bold; padding: 1px 5px; border-radius: 3px; margin-left: .3rem; font-family: Arial, sans-serif; }
+.cai-badge { background: #2c4a3e; color: #fff; font-size: 10px; font-weight: bold; padding: 1px 5px; border-radius: 3px; margin-left: .3rem; font-family: Arial, sans-serif; text-decoration: none; }
+.cai-badge:hover { background: #3d6b5a; color: #fff; text-decoration: none; }
 .diff { font-family: Arial, sans-serif; font-size: 11px; font-weight: bold; padding: .2rem .55rem; border-radius: 20px; white-space: nowrap; align-self: start; }
 .d-e { background: #ddf0cc; color: #2d6020; }
 .d-m { background: #f5e8c0; color: #7a4f10; }
@@ -525,11 +529,13 @@ footer { background: #1e3028; text-align: center; padding: 2rem 1.25rem; }
     <p class="eyebrow en">Eco-sustainability</p>
     <h2 class="it">Un soggiorno <em>a impatto zero</em></h2>
     <h2 class="en">A <em>zero-impact</em> stay</h2>
-    <p class="it">Energia rinnovabile, acqua calda solare, zero rifiuti e pellet in inverno. Il rispetto per l'ambiente non è marketing — è proprio come funziona la casa.</p>
-    <p class="en">Renewable energy, solar hot water, zero waste and pellet in winter. Environmental care isn't marketing — it's just how the house works.</p>
+    <p class="it">Energia rinnovabile, acqua calda solare, zero rifiuti e pellet in inverno.</p>
+    <p class="en">Renewable energy, solar hot water, zero waste and pellet in winter.</p>
+    <p class="it" style="font-family:Georgia,serif;font-size:1.05rem;color:#2c4a3e;font-style:italic;border-left:3px solid #7a9e8e;padding:.6rem 1rem;background:#f0f5f2;border-radius:0 6px 6px 0;margin-bottom:.85rem;">Il rispetto per l&rsquo;ambiente non &egrave; marketing &mdash; &egrave; proprio come funziona la casa.</p>
+    <p class="en" style="font-family:Georgia,serif;font-size:1.05rem;color:#2c4a3e;font-style:italic;border-left:3px solid #7a9e8e;padding:.6rem 1rem;background:#f0f5f2;border-radius:0 6px 6px 0;margin-bottom:.85rem;">Environmental care isn&rsquo;t marketing &mdash; it&rsquo;s just how the house works.</p>
     <div class="eco-grid">
       <div class="eco-card"><span class="eco-icon" style="color:#f59e0b">☀</span><div class="eco-title it">Solare Termico</div><div class="eco-title en">Solar Thermal</div><p class="it">100% acqua calda senza gas né emissioni.</p><p class="en">100% hot water without gas or emissions.</p></div>
-      <div class="eco-card"><span class="eco-icon">⚡</span><div class="eco-title it">Fotovoltaico</div><div class="eco-title en">Photovoltaic</div><p class="it">~100% elettricità da fonte rinnovabile.</p><p class="en">~100% electricity from renewable source.</p></div>
+      <div class="eco-card"><span class="eco-icon">⚡</span><div class="eco-title it">Fotovoltaico</div><div class="eco-title en">Photovoltaic</div><p class="it">Principalmente elettricità da fonte rinnovabile.</p><p class="en">Mainly electricity from renewable source.</p></div>
       <div class="eco-card"><span class="eco-icon" style="color:#22c55e">♻</span><div class="eco-title it">Zero Rifiuti</div><div class="eco-title en">Zero Waste</div><p class="it">Dispenser ricaricabili, raccolta differenziata, acqua di sorgente al rubinetto.</p><p class="en">Refillable dispensers, waste sorting, spring tap water.</p></div>
       <div class="eco-card"><span class="eco-icon">🔥</span><div class="eco-title it">Pellet (inverno)</div><div class="eco-title en">Pellet (winter)</div><p class="it">Stufa a pellet nov–mar a basse emissioni certificate.</p><p class="en">Pellet stove Nov–Mar. Certified low-emission combustion.</p></div>
     </div>
@@ -575,7 +581,7 @@ footer { background: #1e3028; text-align: center; padding: 2rem 1.25rem; }
         <div class="stat-row"><span class="stat-lbl it">Bagni</span><span class="stat-lbl en">Bathrooms</span><span class="stat-val">1</span></div>
         <div class="stat-row"><span class="stat-lbl it">Quota</span><span class="stat-lbl en">Altitude</span><span class="stat-val">600 m</span></div>
         <div class="stat-row"><span class="stat-lbl">Starlink</span><span class="stat-val">+250 Mbps</span></div>
-        <div class="stat-row"><span class="stat-lbl it">Energia</span><span class="stat-lbl en">Energy</span><span class="stat-val">~100% ☀</span></div>
+        <div class="stat-row"><span class="stat-lbl it">Energia</span><span class="stat-lbl en">Energy</span><span class="stat-val it">~princ. ☀</span><span class="stat-val en">~mainly ☀</span></div>
         <div class="stat-row"><span class="stat-lbl it">Parcheggio</span><span class="stat-lbl en">Parking</span><span class="stat-val it">Gratuito</span><span class="stat-val en">Free</span></div>
         <div class="stat-row"><span class="stat-lbl it">Da Firenze</span><span class="stat-lbl en">From Florence</span><span class="stat-val">~1h 10′</span></div>
         <div class="stat-row"><span class="stat-lbl it">Da Arezzo</span><span class="stat-lbl en">From Arezzo</span><span class="stat-val">~45 min</span></div>
@@ -607,9 +613,9 @@ footer { background: #1e3028; text-align: center; padding: 2rem 1.25rem; }
         <div style="font-family:Arial,sans-serif;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:.3rem">Starlink Satellite — incluso nel prezzo</div>
         <div class="spd-big">+250<span class="spd-unit"> Mbps</span></div>
         <div class="spd-label">Download · +250 Mbps</div>
-        <div class="sf"><span class="sf-i">🛰</span><div><div class="sf-title it">Internet illimitato incluso</div><div class="sf-title en">Unlimited internet included</div><div class="sf-desc it">Copertura totale indoor e outdoor.</div><div class="sf-desc en">Full indoor and outdoor coverage.</div></div></div>
-        <div class="sf"><span class="sf-i">🌲</span><div><div class="sf-title it">Silenzio totale · 600 m s.l.m.</div><div class="sf-title en">Total silence · 600 m altitude</div><div class="sf-desc it">6–8°C più fresco della città d'estate.</div><div class="sf-desc en">6–8°C cooler than the city in summer.</div></div></div>
-        <div class="sf"><span class="sf-i">🥾</span><div><div class="sf-title it">Pausa pranzo: sentieri CAI dal borgo</div><div class="sf-title en">Lunch break: CAI trails from the hamlet</div><div class="sf-desc it">Cima del Pratomagno a 1592 m raggiungibile in giornata.</div><div class="sf-desc en">Pratomagno summit at 1,592 m reachable in a day.</div></div></div>
+        <div class="sf"><div><div class="sf-title it">Internet illimitato incluso</div><div class="sf-title en">Unlimited internet included</div><div class="sf-desc it">Copertura totale indoor e outdoor.</div><div class="sf-desc en">Full indoor and outdoor coverage.</div></div></div>
+        <div class="sf"><div><div class="sf-title it">Silenzio totale · 600 m s.l.m.</div><div class="sf-title en">Total silence · 600 m altitude</div><div class="sf-desc it">6–8°C più fresco della città d'estate.</div><div class="sf-desc en">6–8°C cooler than the city in summer.</div></div></div>
+        <div class="sf"><div><div class="sf-title it">Pausa pranzo: sentieri CAI dal borgo</div><div class="sf-title en">Lunch break: CAI trails from the hamlet</div><div class="sf-desc it">Cima del Pratomagno a 1592 m raggiungibile in giornata.</div><div class="sf-desc en">Pratomagno summit at 1,592 m reachable in a day.</div></div></div>
       </div>
     </div>
   </div>
@@ -628,8 +634,8 @@ footer { background: #1e3028; text-align: center; padding: 2rem 1.25rem; }
       <div class="trail-row">
         <div class="tr-num">01</div>
         <div>
-          <div class="tr-title it">Cima del Pratomagno <span class="cai-badge">CAI</span></div>
-          <div class="tr-title en">Pratomagno Summit <span class="cai-badge">CAI</span></div>
+          <div class="tr-title it">Cima del Pratomagno <a href="#attivita" class="cai-badge">CAI</a></div>
+          <div class="tr-title en">Pratomagno Summit <a href="#attivita" class="cai-badge">CAI</a></div>
           <div class="tr-stats">📏 ~14 km A/R &nbsp; ⬆ 900 m D+ &nbsp; ⏱ 5–6 h</div>
           <p class="tr-desc it">Dal borgo alla croce di vetta a 1592 m. Vista a 360° su Casentino, Valdarno e Appennino.</p>
           <p class="tr-desc en">From the hamlet to the summit cross at 1,592 m. 360° views over Casentino, Valdarno and Apennines.</p>
@@ -639,8 +645,8 @@ footer { background: #1e3028; text-align: center; padding: 2rem 1.25rem; }
       <div class="trail-row">
         <div class="tr-num">02</div>
         <div>
-          <div class="tr-title it">Traversata del crinale — Vallombrosa <span class="cai-badge">CAI</span></div>
-          <div class="tr-title en">Ridge traverse — Vallombrosa <span class="cai-badge">CAI</span></div>
+          <div class="tr-title it">Traversata del crinale — Vallombrosa <a href="#attivita" class="cai-badge">CAI</a></div>
+          <div class="tr-title en">Ridge traverse — Vallombrosa <a href="#attivita" class="cai-badge">CAI</a></div>
           <div class="tr-stats">📏 ~25 km &nbsp; ⬆ 1200 m D+ &nbsp; ⏱ 7–9 h</div>
           <p class="tr-desc it">Crinale quasi interamente sopra i 1300 m. In due tappe con pernottamento a Pratomagno Apartment.</p>
           <p class="tr-desc en">Ridge almost entirely above 1,300 m. Can be split with overnight at Pratomagno Apartment.</p>
@@ -650,8 +656,8 @@ footer { background: #1e3028; text-align: center; padding: 2rem 1.25rem; }
       <div class="trail-row">
         <div class="tr-num">03</div>
         <div>
-          <div class="tr-title it">Anello borghi medievali <span class="cai-badge">CAI</span></div>
-          <div class="tr-title en">Medieval villages loop <span class="cai-badge">CAI</span></div>
+          <div class="tr-title it">Anello borghi medievali <a href="#attivita" class="cai-badge">CAI</a></div>
+          <div class="tr-title en">Medieval villages loop <a href="#attivita" class="cai-badge">CAI</a></div>
           <div class="tr-stats">📏 ~8 km &nbsp; ⬆ 350 m D+ &nbsp; ⏱ 2,5–3 h</div>
           <p class="tr-desc it">Castagneti storici, chiese romaniche, scorci sull'Appennino. Ottimo per famiglie.</p>
           <p class="tr-desc en">Historic chestnut groves, Romanesque churches, Apennine views. Great for families.</p>
@@ -661,8 +667,8 @@ footer { background: #1e3028; text-align: center; padding: 2rem 1.25rem; }
       <div class="trail-row">
         <div class="tr-num">04</div>
         <div>
-          <div class="tr-title it">Anello di Camaldoli — Parco Nazionale <span class="cai-badge">CAI</span></div>
-          <div class="tr-title en">Camaldoli Loop — National Park <span class="cai-badge">CAI</span></div>
+          <div class="tr-title it">Anello di Camaldoli — Parco Nazionale <a href="#attivita" class="cai-badge">CAI</a></div>
+          <div class="tr-title en">Camaldoli Loop — National Park <a href="#attivita" class="cai-badge">CAI</a></div>
           <div class="tr-stats">📏 ~12 km &nbsp; ⬆ 550 m D+ &nbsp; ⏱ 4–5 h</div>
           <p class="tr-desc it">Eremo di Camaldoli (1111 m) e monastero. Foresta di abeti bianchi millenari. ~20 km dall'appartamento.</p>
           <p class="tr-desc en">Camaldoli hermitage (1,111 m) and monastery. Ancient silver fir forest. ~20 km from apartment.</p>
@@ -682,8 +688,8 @@ footer { background: #1e3028; text-align: center; padding: 2rem 1.25rem; }
       </div>
     </div>
     <p style="text-align:right;margin-top:.75rem">
-      <a href="pratomagno_trails_sport_art.html" class="it">→ Tutte le escursioni, sport &amp; arte del territorio</a>
-      <a href="pratomagno_trails_sport_art.html" class="en">→ All hikes, sport &amp; art in the area</a>
+      <a href="#attivita" class="it" style="color:#3d6b5a">🔗 Link utili CAI &amp; sentieri</a>
+      <a href="#attivita" class="en" style="color:#3d6b5a">🔗 Useful links CAI &amp; trails</a>
     </p>
   </div>
 </section>
@@ -799,7 +805,7 @@ footer { background: #1e3028; text-align: center; padding: 2rem 1.25rem; }
           </div>
           <div class="mc-place">
             <div class="m-title it">Abbazia di Vallombrosa</div><div class="m-title en">Vallombrosa Abbey</div>
-            <p class="m-text it">Abbazia benedettina benedettina benedettina benedettina (XI sec.) nel cuore della foresta.</p>
+            <p class="m-text it">Abbazia benedettina (XI sec.) nel cuore della foresta.</p>
             <p class="m-text en">Benedictine abbey (11th c.) in the heart of the forest.</p>
             <div class="m-dist">📍 ~22 km</div>
           </div>
@@ -913,7 +919,7 @@ footer { background: #1e3028; text-align: center; padding: 2rem 1.25rem; }
             <div class="rule"><span>-</span><span class="it">Smart working benvenuto · Starlink incluso · −10% per ≥7 notti</span><span class="en">Remote working welcome · Starlink included · −10% for ≥7 nights</span></div>
             <div class="rule"><span>-</span><span class="it">Famiglie benvenute · Bambini &lt;4 anni gratuiti</span><span class="en">Families welcome · Children under 4 free</span></div>
             <div class="rule"><span>-</span><span class="it">Vietato fumare in appartamento (area fumo terrazzo)</span><span class="en">No smoking indoors (permitted on terrace)</span></div>
-            <div class="rule"><span>-</span><span class="it">No feste · Silenzio 23:00–8:00</span><span class="en">No parties · Quiet hours 11 pm–8 am</span></div>
+            <div class="rule"><span>-</span><span class="it">No feste · Silenzio 23:00–8:00</span><span class="en">No parties · Quiet hours 23:00–8:00</span></div>
             <div class="rule"><span>-</span><span class="it">Raccolta differenziata · cassonetti a 50 m</span><span class="en">Waste sorting required · bins 50 m away</span></div>
             <div class="rule"><span>-</span><span class="it">Animali domestici non ammessi</span><span class="en">No pets allowed</span></div>
           </div>
@@ -1005,12 +1011,12 @@ footer { background: #1e3028; text-align: center; padding: 2rem 1.25rem; }
     <div class="act-block">
       <div class="act-block-title"><span class="it">Percorsi Tematici</span><span class="en">Thematic Routes</span></div>
       <table class="act-table">
-        <tr><td class="act-name-td">Percorso Hinkler Ring<small class="en">Hinkler Ring Route</small></td><td><span class="it">Percorso storico sul crinale</span><span class="en">Historical ridge route</span></td></tr>
-        <tr><td class="act-name-td">Croce — Cippo Hinkler — Pozza Nera<small class="en">Cross — Hinkler Monument — Pozza Nera</small></td><td><span class="it">Pratomagno · trekking panoramico</span><span class="en">From Pratomagno · panoramic trek</span></td></tr>
-        <tr><td class="act-name-td">Relitto Aereo — Uomo di Sasso<small class="en">Aircraft Wreck — Stone Man Route</small></td><td><span class="it">Itinerario storico sul crinale</span><span class="en">Historical ridge itinerary</span></td></tr>
-        <tr><td class="act-name-td">Pescina Santa — Portacce<small class="en">Pescina Santa — Portacce Route</small></td><td><span class="it">Sorgenti e boschi del Pratomagno</span><span class="en">Springs and Pratomagno woodland</span></td></tr>
-        <tr><td class="act-name-td">Bagni di Cetica<small class="en">Cetica Thermal Springs</small></td><td><span class="it">Area termale · 1.150 m · 5 km dall'appartamento</span><span class="en">Thermal area · 1,150 m · 5 km from apartment</span></td></tr>
-        <tr><td class="act-name-td">Trek a Cetica<small class="en">Cetica Trek</small></td><td><span class="it">Pieve Romanica S.Michele Arcangelo · Museo del Carbonaio</span><span class="en">Romanesque Church S.Michele Arcangelo · Charcoal Maker Museum</span></td></tr>
+        <tr><td class="act-name-td"><span class="it">Percorso Hinkler Ring</span><span class="en">Hinkler Ring Route</span></td><td><span class="it">Percorso storico sul crinale</span><span class="en">Historical ridge route</span></td></tr>
+        <tr><td class="act-name-td"><span class="it">Croce — Cippo Hinkler — Pozza Nera</span><span class="en">Cross — Hinkler Monument — Pozza Nera</span></td><td><span class="it">Pratomagno · trekking panoramico</span><span class="en">From Pratomagno · panoramic trek</span></td></tr>
+        <tr><td class="act-name-td"><span class="it">Relitto Aereo — Uomo di Sasso</span><span class="en">Aircraft Wreck — Stone Man Route</span></td><td><span class="it">Itinerario storico sul crinale</span><span class="en">Historical ridge itinerary</span></td></tr>
+        <tr><td class="act-name-td"><span class="it">Pescina Santa — Portacce</span><span class="en">Pescina Santa — Portacce Route</span></td><td><span class="it">Sorgenti e boschi del Pratomagno</span><span class="en">Springs and Pratomagno woodland</span></td></tr>
+        <tr><td class="act-name-td"><span class="it">Bagni di Cetica</span><span class="en">Cetica Thermal Springs</span></td><td><span class="it">Area termale · 1.150 m · 5 km dall'appartamento</span><span class="en">Thermal area · 1,150 m · 5 km from apartment</span></td></tr>
+        <tr><td class="act-name-td"><span class="it">Trek a Cetica</span><span class="en">Cetica Trek</span></td><td><span class="it">Pieve Romanica S.Michele Arcangelo · Museo del Carbonaio</span><span class="en">Romanesque Church S.Michele Arcangelo · Charcoal Maker Museum</span></td></tr>
       </table>
     </div>
 
@@ -1018,19 +1024,20 @@ footer { background: #1e3028; text-align: center; padding: 2rem 1.25rem; }
       <div class="act-block">
         <div class="act-block-title"><span class="it">Attività Sportive</span><span class="en">Sports Activities</span></div>
         <table class="act-table">
-          <tr><td class="act-icon-td">⛷️</td><td class="act-name-td">Sport Invernali<small class="en">Winter Sports</small></td><td class="act-link-td"><a href="https://www.parcoforestecasentinesi.it" target="_blank" rel="noopener">parcoforestecasentinesi.it</a></td></tr>
-          <tr><td class="act-icon-td">⛳</td><td class="act-name-td">Golf<small class="en">Golf Club</small></td><td class="act-link-td"><a href="https://www.golfclubcasentino.it" target="_blank" rel="noopener">golfclubcasentino.it</a></td></tr>
+          <tr><td class="act-icon-td">⛷️</td><td class="act-name-td"><span class="it">Sport Invernali</span><span class="en">Winter Sports</span></td><td class="act-link-td"><a href="https://www.parcoforestecasentinesi.it" target="_blank" rel="noopener">parcoforestecasentinesi.it</a></td></tr>
+          <tr><td class="act-icon-td">⛳</td><td class="act-name-td">Golf</td><td class="act-link-td"><a href="https://www.golfclubcasentino.it" target="_blank" rel="noopener">golfclubcasentino.it</a></td></tr>
           <tr><td class="act-icon-td">🎾</td><td class="act-name-td">Tennis</td><td class="act-link-td"><a href="https://www.casentino.it/attivit%C3%A0-sportive/235-tennis" target="_blank" rel="noopener">casentino.it</a></td></tr>
-          <tr><td class="act-icon-td">🚵</td><td class="act-name-td">Mountain Bike<small class="en">MTB / E-Bike</small></td><td class="act-link-td"><a href="https://www.casentinoebike.it" target="_blank" rel="noopener">casentinoebike.it</a></td></tr>
-          <tr><td class="act-icon-td">🚴</td><td class="act-name-td">Ciclopiste<small class="en">Cycle Paths</small></td><td class="act-link-td"><a href="https://www.paraclick.it" target="_blank" rel="noopener">paraclick.it</a></td></tr>
-          <tr><td class="act-icon-td">🐴</td><td class="act-name-td">Equitazione<small class="en">Horse Riding</small></td><td class="act-link-td"><a href="https://www.clubippicosandonato.it" target="_blank" rel="noopener">clubippicosandonato.it</a></td></tr>
-          <tr><td class="act-icon-td">🎣</td><td class="act-name-td">Pesca — Torrente Solano<small class="en">Trout Fishing — Solano River</small></td><td class="act-link-td"><a href="https://www.robertobarbaresi.it/articoli-itinerari/trote-in-casentino/" target="_blank" rel="noopener">robertobarbaresi.it</a></td></tr>
+          <tr><td class="act-icon-td">🚵</td><td class="act-name-td"><span class="it">Mountain Bike</span><span class="en">MTB / E-Bike</span></td><td class="act-link-td"><a href="https://www.casentinoebike.it" target="_blank" rel="noopener">casentinoebike.it</a></td></tr>
+          <tr><td class="act-icon-td">🚴</td><td class="act-name-td"><span class="it">Ciclopiste</span><span class="en">Cycle Paths</span></td><td class="act-link-td"><a href="https://www.paraclick.it" target="_blank" rel="noopener">paraclick.it</a></td></tr>
+          <tr><td class="act-icon-td">🐴</td><td class="act-name-td"><span class="it">Equitazione</span><span class="en">Horse Riding</span></td><td class="act-link-td"><a href="https://www.clubippicosandonato.it" target="_blank" rel="noopener">clubippicosandonato.it</a></td></tr>
+          <tr><td class="act-icon-td">🎣</td><td class="act-name-td"><span class="it">Pesca — Torrente Solano</span><span class="en">Trout Fishing — Solano River</span></td><td class="act-link-td"><a href="https://www.robertobarbaresi.it/articoli-itinerari/trote-in-casentino/" target="_blank" rel="noopener">robertobarbaresi.it</a></td></tr>
           <tr><td class="act-icon-td">🏃</td><td class="act-name-td">Trail Running</td><td class="act-link-td"><a href="https://www.trailrunpro.it" target="_blank" rel="noopener">trailrunpro.it</a></td></tr>
         </table>
       </div>
       <div class="act-block">
         <div class="act-block-title">🔗 <span class="it">Link Utili</span><span class="en">Useful Links</span></div>
         <table class="act-table">
+          <tr><td class="act-icon-td">🥾</td><td class="act-name-td">CAI — Club Alpino Italiano<small class="it">Sentieri ufficiali · sezione Arezzo</small><small class="en">Official trails · Arezzo section</small></td><td class="act-link-td"><a href="https://www.cai.it" target="_blank" rel="noopener">cai.it</a></td></tr>
           <tr><td class="act-icon-td">🗺️</td><td class="act-name-td">Mappa &amp; Sentieri Pratomagno</td><td class="act-link-td"><a href="https://www.lamiabellatoscana.it/2016/07/la-mappa-ed-i-sentieri-del-pratomagno.html" target="_blank" rel="noopener">lamiabellatoscana.it</a></td></tr>
           <tr><td class="act-icon-td">📍</td><td class="act-name-td">Wikiloc — Cetica–Bibbiena</td><td class="act-link-td"><a href="https://www.wikiloc.com/percorsi-escursionismo/cetica-bibbiena-4269558" target="_blank" rel="noopener">wikiloc.com</a></td></tr>
           <tr><td class="act-icon-td">📓</td><td class="act-name-td">Cronache di Cammini</td><td class="act-link-td"><a href="https://www.cronachedicammini.com" target="_blank" rel="noopener">cronachedicammini.com</a></td></tr>
@@ -1057,11 +1064,6 @@ footer { background: #1e3028; text-align: center; padding: 2rem 1.25rem; }
     <a href="mailto:pratomgnoapartament@gmail.com" class="btn-primary en">✉ Send email</a>
     <a href="tel:+390575555106" class="btn-ghost">📞 +39 0575 555106</a>
   </div>
-  <div class="cta-contact">
-    Loc. Castagneto-Cetica 173, Castel San Niccolò (AR) 52018 · Tuscany<br>
-    <a href="mailto:pratomgnoapartament@gmail.com">pratomgnoapartament@gmail.com</a> · <a href="tel:+390575555106">+39 0575 555106</a><br>
-    <span style="opacity:.6">CIN: IT051010C2QLKDO7XC · ⚡ ~100% energia rinnovabile / renewable energy</span>
-  </div>
 </section>
 
 </main>
@@ -1071,7 +1073,7 @@ footer { background: #1e3028; text-align: center; padding: 2rem 1.25rem; }
   <div class="footer-info">
     Loc. Castagneto-Cetica 173 · Castel San Niccolò (AR) 52018 · Toscana, Italia<br>
     <a href="mailto:pratomgnoapartament@gmail.com">pratomgnoapartament@gmail.com</a> · <a href="tel:+390575555106">+39 0575 555106</a><br>
-    CIN: IT051010C2QLKDO7XC · ⚡ ~100% energia rinnovabile / renewable energy
+    CIN: IT051010C2QLKDO7XC · ⚡ principalmente energia rinnovabile / mainly renewable energy
   </div>
 </footer>
 
